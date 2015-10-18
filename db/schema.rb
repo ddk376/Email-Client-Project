@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018060826) do
+ActiveRecord::Schema.define(version: 20151018062831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "electronic_mails", force: :cascade do |t|
+    t.integer  "email_thread_id",                 null: false
+    t.integer  "parent_email_id"
+    t.string   "from",                            null: false
+    t.text     "body"
+    t.boolean  "is_important",    default: false
+    t.boolean  "is_starred",      default: false
+    t.boolean  "is_draft",        default: false
+    t.boolean  "is_trash",        default: false
+    t.boolean  "is_archived",     default: false
+    t.boolean  "is_read",         default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
 
   create_table "email_threads", force: :cascade do |t|
     t.string   "subject"
