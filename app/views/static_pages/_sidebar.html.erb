@@ -1,0 +1,41 @@
+<a href="#"><button type="button" class="compose">COMPOSE</button></a>
+
+<ul class="folder">
+  <li class="selected"><a href="#"><strong>Inbox  </strong></a></li>
+  <li ><a href="#/starred_emails">Starred</a></li>
+  <li ><a href="#/important_emails">Important</a></li>
+  <li ><a href="#/sent_emails">Sent Mail</a></li>
+  <li ><a href="#/draft_emails"><strong>Drafts </strong></a></li>
+
+  <li onclick="toggleMoreMenu()" id="more"><a >More &#x25BE;</a></li>
+  <li class="more-menu" style="display: none"><a href="#">Chats</a></li>
+  <li class="more-menu" style="display: none"><a href="#">All Mail</a></li>
+  <li class="more-menu" style="display: none"><a href="#"><strong>Spam</strong</a></li>
+  <li class="more-menu" style="display: none"><a href="#">Trash</a></li>
+</ul>
+<!-- <table class="contacts">
+  <th colspan="2">
+    Contacts
+  </th>
+ <% @users.each_with_index do |user, index| %>
+    <tr>
+      <td><%= index +=1 %></td>
+      <td><%= user.email.split("@")[0] %></td>
+      <td><%= link_to "Chat", "#", class: "btn btn-success btn-xs start-conversation",
+              "data-sid" => current_user.id, "data-rip" => user.id %>
+      </td>
+    </tr>
+  <% end %> 
+</table> -->
+<script type="text/javascript">
+
+   function toggleMoreMenu(){
+     if($('#more').text() == "Less \u25B4"){
+       $('#more').html("<a>More \u25BE</a>");
+     }else{
+       $('#more').html("<a>Less \u25B4</a>");
+     }
+     $('.more-menu').toggle();
+   };
+
+</script>

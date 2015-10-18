@@ -110,7 +110,10 @@ header.header nav.header {
 .header-search-bar> input:focus {
     border-color: #06f;
   }
-
+.header-list-group {
+  font-size: 14px;
+  color: #888;
+}
 .icon-grid {
     display: block;
     position: relative;
@@ -193,4 +196,202 @@ header.header nav.header {
   text-align: center;
   padding: 10px;
   border-bottom: 1px solid #ccc;
+}
+
+.window .functionality{
+  display: block;
+  height: 30px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.functionality-menu{
+  display: block;
+}
+.functionality-logo {
+  display: block;
+  width: 180px;
+}
+
+.functionality-menu-list{
+  display: block;
+  width: auto;
+  float: left;
+  position: relative;
+  top: -6px;
+}
+
+.functionality-menu-list > li{
+  float: left;
+
+}
+.functionality-menu-list > li > button {
+  cursor: default;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+  margin-right: 16px;
+  height: 27px;
+  line-height: 27px;
+  min-width: 54px;
+  outline: 0;
+  padding: 0 8px;
+  background: rgb(240,240,240);
+  border-radius: 2px;
+  border: 1px solid #ccc;
+}
+
+.functionality-menu-list > li button.refresh {
+      opacity: .55;
+
+}
+.functionality-logo > h2 {
+  float: left;
+  text-align: left;
+  color: #d14836;
+  font-weight: normal;
+  font-size: 20px;
+  position: relative;
+  top: -5px;
+  padding-left: 30px;
+  padding-right: 136px;
+}
+
+.functionality-pagination-settings {
+  float: right;
+  position: relative;
+
+  top: -6px;
+  left: -30px;
+
+}
+.functionality-pagination-settings > li {
+  float: left;
+}
+.functionality-pagination-settings > li:last-child{
+  margin-left: 15px;
+}
+.functionality-pagination-settings > li > button {
+  padding: 6px 15px;
+  background: rgb(240,240,240);
+  border-radius: 2px;
+  border: 1px solid #ccc;
+
+}
+main section.sidebar {
+  width: 210px;
+  margin-right: 1px;
+  float: left;
+  min-height: 220px;
+  font-size: 80%;
+}
+
+
+main section.sidebar button {
+  min-width: 115px;
+  background-color: #d14836;
+  border: 1px solid transparent;
+  color: white;
+  border: 0px;
+  border-radius: 2px;
+  cursor: default;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+  height: 29px;
+  line-height: 27px;
+  padding: 0 8px;
+  margin: 10px 33px 10px 33px;
+}
+.sidebar .folder {
+  margin-left: 15px;
+}
+
+.sidebar .folder li a:hover {
+  background-color: rgb(237,237,237);
+}
+.sidebar .folder li a{
+  display: block;
+  padding: 5px 20px;
+  position: relative;
+  margin-right: 20px;
+  color: black;
+  padding-left: 18px;
+}
+
+.sidebar .folder li a strong {
+  font-weight: bold;
+}
+.sidebar .folder li.selected a {
+  color: #d14836;
+}
+main section.main {
+  background-color: white;
+  font-size: 80%;
+
+  min-height: 741px;
+
+}
+
+main section.main form.create-email {
+  margin-left: 210px;
+  border: 2px solid gray;
+}
+main section.main form.create-email > input {
+  border: 0px solid;
+  height: 41px;
+  font-size: 13px;
+  background: transparent;
+  min-width: 470px;
+  max-width: 1056px;
+}
+main section.main form.create-email > input:focus {
+  outline: none
+}
+
+main section.main form.create-email > nav {
+  background-color: #404040;
+  color: white;
+  height: 30px;
+  vertical-align: middle;
+}
+
+main section.main form.create-email nav > span{
+  margin: auto;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 4px 0 0 6px;
+  font-family: arial,sans-serif;
+  font-size: 13px;
+}
+main section.main form.create-email textarea#email_body {
+  min-height: 551px;;
+  width: 549px;
+  z-index: -2;
+  border: 0px;
+  resize: none;
+  outline: none;
+  font-size: 13px;
+}
+
+main section.main form.create-email footer.email-form-footer {
+  border-top:  1px solid rgb(237,237,237);
+  background-color: #e5e5e5;
+  height: 44px;
+}
+main section.main form.create-email footer.email-form-footer button {
+  background-color: #4d90fe;
+  border: 1px solid #3079ed;
+  color: #fff;
+  border-radius: 2px;
+  cursor: default;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+  height: 27px;
+  line-height: 27px;
+  min-width: 54px;
+  padding: 0 8px;
 }
