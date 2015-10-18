@@ -1,5 +1,5 @@
 # Noofel Email-Client
- [link to Heroku Live Site goes here]
+(www.noofel.com "Live")
 
 # Features
 - [x] Create an account
@@ -13,6 +13,7 @@
 - [ ] Receive Email
 
 # Database
+(schema.md "schema.md")
 
 # Implementation Timeline
 ## Phase 1: User Authentication, Session Creation, Thread Model, Email Model
@@ -29,3 +30,4 @@
 - [ ] Real-time Chat Features
 - [ ] Spam filter using Support Vector Machine
 - [ ] Pagination using Kaminari
+- [ ] Search Using PgSearch

@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151017222020) do
+ActiveRecord::Schema.define(version: 20151018060826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "email_threads", force: :cascade do |t|
+    t.string   "subject"
+    t.integer  "owner_id",                   null: false
+    t.boolean  "is_checked", default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "email_threads", ["owner_id"], name: "index_email_threads_on_owner_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
