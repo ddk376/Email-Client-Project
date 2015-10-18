@@ -16,7 +16,7 @@
       <li><span class="notifications"></span></li>
       <li  onclick="toggleProfileDropDown()"><span class="profile-icon">
          <div class="profileDropdown" style="display: none;">
-           <form class="sign-out" action="<%= sessions_url %>" method="post">
+           <form class="sign-out" action="<%= session_url %>" method="post">
              <input type="hidden"
                     name="authenticity_token"
                     value="<%= form_authenticity_token %>">

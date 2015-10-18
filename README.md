@@ -3,14 +3,15 @@
 
 # Features
 - [x] Create an account
-- [ ] Sign in / Sign Out
-- [ ] Demo User
+- [x] Sign in / Sign Out
+- [x] Demo User
 - [ ] Create, show, delete, edit email threads
 - [ ] Multiple Recipients, Bcc Recipients, Cc Recipients
 - [ ] Send Email
 - [ ] Attachments in email
 - [ ] Search through threads
 - [ ] Receive Email
+
 # Database
 
 # Implementation Timeline

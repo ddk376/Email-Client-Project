@@ -1,0 +1,109 @@
+// Place all the styles related to the session controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+  font-family: Arial, sans-serif;
+}
+.title {
+}
+.login-header-logo {
+  position: relative;
+  top: 50px;
+  font-weight: normal;
+  font-size: 32px;
+  text-align: center;
+}
+.login-banner{
+  padding-top: 30px;
+  text-align: center;
+  color: #555;
+  font-weight: 200;
+  font-size: 40px;
+}
+.login-main {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+.profile-login{
+  display: inline-block;
+  position: relative;
+  top: -5px;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  margin-left: 10px;
+  background: asset-url(login-profile-icon);
+  background-size: 100%;
+}
+.login {
+  display: block;
+  position: relative;
+  top: 20px;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  width: 274px;
+
+  background-color: #f7f7f7;;
+  padding: 40px;
+  margin: auto;
+}
+.login input {
+  background: white;
+  text-align: left;
+  margin-top: 10px;
+  width: 269px;
+  height: 35px;
+  font-size: 16px;
+  border: 1px solid #b9b9b9;
+}
+.login input[type=submit] {
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  font-size: 13px;
+  width: 274px;
+  height: 36px;
+  border: 1px solid #3079ed;
+  color: #fff;
+  text-shadow: 0 1px rgba(0,0,0,0.1);
+  background-color: #4d90fe;
+}
+.demo {
+  width: 100%;
+  display: inline-block;
+  margin: 0px auto;
+}
+.demo-user input[type=submit] {
+  display: block;
+  margin: 0 auto;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 13px;
+  height: 15px;
+  text-shadow: 0 1px rgba(0,0,0,0.1);
+}
+.demo-user input:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.new-account{
+  width: 100%;
+  text-align: center;
+  margin: 20px auto;
+}
+.create-account {
+  color: #427fed;
+  position: relative;
+  top: 20px;
+  font-size: 14px;
+}
+
+.create-account:hover{
+  text-decoration: underline;
+}

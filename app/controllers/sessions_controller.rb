@@ -15,14 +15,6 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    current_user.received_emails.each do |email|
-      email.is_checked = false
-      email.save
-    end
-    current_user.sent_emails.each do |email|
-      email.is_checked = false
-      email.save
-    end
     sign_out!
     redirect_to new_session_url
   end

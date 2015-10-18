@@ -1,5 +1,15 @@
-<div class="login-main">
-<form class="login" action="<%= users_url %>" method="post">
+<div class="login-title">
+  <h1 class="login-header-logo"><a href="#"><span class="blue">N</span><span class="red">o</span><span class="yellow">o</span><span class="blue">f</span><span class="green">e</span><span class="red">l</span></a></h1>
+</div>
+<div class="login-banner">
+  <p>
+    Homage to Gmail
+  </p>
+</div>
+<div class="login">
+
+<form class="login-main" action="<%= users_url %>" method="post">
+  <div class="profile-login"></div>
   <input type="hidden"
          name="authenticity_token"
          value="<%= form_authenticity_token %>">
@@ -7,3 +17,4 @@
   <input name="user[password]" type="password" value=""><br>
   <input type="submit" value="Submit"><br>
 </form>
+</div>
