@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   attr_reader :password
   after_initialize :ensure_session_token
 
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     user.try(:is_password?, password) ? user : nil                                #invokes the public method whose name goes as the first argument just like public_send, except that it the receiver does not respond to it the call returns nil rather than raising an exception

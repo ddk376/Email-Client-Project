@@ -1,0 +1,2 @@
+class EmailThreadsController < ApplicationController
+end

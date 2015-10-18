@@ -7,8 +7,9 @@
 | owner_id    | integer   | null: false              |
 | is_checked  | boolean   | default: false           |
 
-
 ## email
+| column name | data type | details                  |
+|-------------|:---------:|-------------------------:|
 
 ## Recipients
 
