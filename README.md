@@ -2,12 +2,15 @@
  [link to Heroku Live Site goes here]
 
 # Features
-- [ ] Create an account
+- [x] Create an account
 - [ ] Sign in / Sign Out
 - [ ] Demo User
 - [ ] Create, show, delete, edit email threads
+- [ ] Multiple Recipients, Bcc Recipients, Cc Recipients
+- [ ] Send Email
+- [ ] Attachments in email
 - [ ] Search through threads
-
+- [ ] Receive Email
 # Database
 
 # Implementation Timeline

@@ -1,0 +1,9 @@
+<form class="login" action="<%= sessions_url %>" method="post">
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+  <input name="user[email]" type="text" value="Enter your Email"><br>
+  <input name="user[password]" type="password" value=""><br>
+  <input type="submit" value="Submit"><br>
+</form>
+<%= link_to "Create Account", new_user_url %>

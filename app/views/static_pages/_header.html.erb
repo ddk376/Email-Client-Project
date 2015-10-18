@@ -1,0 +1,40 @@
+<header class="header">
+  <nav class="header group">
+    <h1 class="header-logo"><a href="#"><span class="blue">N</span><span class="red">o</span><span class="yellow">o</span><span class="blue">f</span><span class="green">e</span><span class="red">l</span></a></h1>
+
+    <form class="search" action="#/searches" method="get">
+      <div class="header-search-bar group">
+          <input class="query" name="query" type="text" >
+          <button class="searchsubmit" >Search</button>
+      </div>
+
+    </form>
+
+    <ul class="header-list-group">
+      <li><a href="#">You</a></li>
+      <li><span class="icon-grid"></span></li>
+      <li><span class="notifications"></span></li>
+      <li  onclick="toggleProfileDropDown()"><span class="profile-icon">
+         <div class="profileDropdown" style="display: none;">
+           <form class="sign-out" action="<%= sessions_url %>" method="post">
+             <input type="hidden"
+                    name="authenticity_token"
+                    value="<%= form_authenticity_token %>">
+             <input type="hidden" name="_method" value="delete">
+             <input type="submit" value="Sign Out">
+           </form>
+         </div>
+         </span>
+      </li>
+    </ul>
+  </nav>
+
+  </header>
+  <p class="flash"><%= flash.notice %></p>
+
+
+  <script type="text/javascript">
+     function toggleProfileDropDown(){
+       $('.profileDropdown').toggle();
+     }
+  </script>
