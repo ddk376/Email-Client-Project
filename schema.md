@@ -1,21 +1,54 @@
 # Schema Information
 
 ## email_threads
-| column name | data type | details                  |
-|-------------|:---------:|-------------------------:|
-| subject     | string    |                          |
-| owner_id    | integer   | null: false              |
-| is_checked  | boolean   | default: false           |
+| column name    | data type | details                  |
+|----------------|:---------:|-------------------------:|
+| subject        | string    |                          |
+| owner_id       | integer   | null: false              |
+| is_checked     | boolean   | default: false           |
 
 ## electronic_mails
-| column name | data type | details                  |
-|-------------|:---------:|-------------------------:|
+| column name     | data type | details                  |
+|-----------------|:---------:|-------------------------:|
+| email_thread_id | integer   | null: false              |
+| parent_email_id | integer   |                          |
+| from            | string    | null: false              |
+| body            | text      |                          |
+| is_important    | boolean   | default: false           |
+| is_starred      | boolean   | default: false           |
+| is_draft        | boolean   | default: false           |
+| is_trash        | boolean   | default: false           |
+| is_archived     | boolean   | default: false           |
+| is_read         | boolean   | default: false           |
 
-## Recipients
+## contacts
+| column name    | data type | details                  |
+|----------------|:---------:|-------------------------:|
+| email          | string    | null: false              |
 
-## Bcc Recipients
+## recipients
+| column name    | data type | details                  |
+|----------------|:---------:|-------------------------:|
+| email_id       | integer   |                          |
+| contact_id     | integer   |                          |
 
-## CC Recipients
+## bcc_recipients
+| column name    | data type | details                  |
+|----------------|:---------:|-------------------------:|
+| email_id       | integer   |                          |
+| contact_id     | integer   |                          |
+
+## cc_recipients
+| column name    | data type | details                  |
+|----------------|:---------:|-------------------------:|
+| email_id       | integer   |                          |
+| contact_id     | integer   |                          |
+
+## has_contacts
+| column name    | data type | details                  |
+|----------------|:---------:|-------------------------:|
+| user_id        | integer   |                          |
+| contact_id     | integer   |                          |
 
 ## Attachments
 
@@ -24,13 +57,8 @@
 ## Message
 
 ## User
-
-
-(subject: "Hello, I am sending a mail", body: "This is some body content", to: ["ddk376@gmail.com","greentea584@gmail.com"] )
-
-(subject: "Hello, Part 2", body: "body content Part 2", to: ["ddk376@gmail.com","greentea584@gmail.com"] , to_bcc: ["ginajjeong@gmail.com", "greentea584@gmail.com"], to_cc: ["test@noofel.com"])
-
-
-(subject: "Hello, Part 3", body: "body content Part 3", to: ["ddk376@gmail.com","greentea584@gmail.com"] , to_bcc: ["ginajjeong@gmail.com", "greentea584@gmail.com"], to_cc: ["test@noofel.com"])
-
-User.create(email: "test@noofel.com", password: "password")
+| column name     | data type | details                  |
+|-----------------|:---------:|-------------------------:|
+| email           | string    | null: false              |
+| password_digest | string    | null: false              |
+| session_token   | string    | null: false              |
