@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018221547) do
+ActiveRecord::Schema.define(version: 20151019100825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,11 +47,8 @@ ActiveRecord::Schema.define(version: 20151018221547) do
     t.integer  "parent_email_id"
     t.string   "from",                            null: false
     t.text     "body"
-    t.boolean  "is_important",    default: false
     t.boolean  "is_starred",      default: false
     t.boolean  "is_draft",        default: false
-    t.boolean  "is_trash",        default: false
-    t.boolean  "is_archived",     default: false
     t.boolean  "is_read",         default: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
@@ -59,10 +56,14 @@ ActiveRecord::Schema.define(version: 20151018221547) do
 
   create_table "email_threads", force: :cascade do |t|
     t.string   "subject"
-    t.integer  "owner_id",                   null: false
-    t.boolean  "is_checked", default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.integer  "owner_id",                     null: false
+    t.boolean  "is_checked",   default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.boolean  "is_archived",  default: false
+    t.boolean  "is_trash",     default: false
+    t.boolean  "is_important", default: false
+    t.boolean  "is_spam",      default: false
   end
 
   add_index "email_threads", ["owner_id"], name: "index_email_threads_on_owner_id", using: :btree

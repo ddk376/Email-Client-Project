@@ -32,4 +32,3 @@
 - [ ] Spam filter using Support Vector Machine
 - [ ] Pagination using Kaminari
 - [ ] Search Using PgSearch
-- [ ] optimize ElectronicMails#to=, ElectronicMails#to_bcc=, ElectronicMails#to_cc=

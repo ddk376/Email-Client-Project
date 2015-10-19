@@ -6,6 +6,10 @@
 | subject        | string    |                          |
 | owner_id       | integer   | null: false              |
 | is_checked     | boolean   | default: false           |
+| is_important   | boolean   | default: false           |
+| is_archived    | boolean   | default: false           |
+| is_trash       | boolean   | default: false           |
+| is_spam        | boolean   | default: false           |
 
 ## electronic_mails
 | column name     | data type | details                  |
@@ -14,11 +18,8 @@
 | parent_email_id | integer   |                          |
 | from            | string    | null: false              |
 | body            | text      |                          |
-| is_important    | boolean   | default: false           |
 | is_starred      | boolean   | default: false           |
 | is_draft        | boolean   | default: false           |
-| is_trash        | boolean   | default: false           |
-| is_archived     | boolean   | default: false           |
 | is_read         | boolean   | default: false           |
 
 ## contacts

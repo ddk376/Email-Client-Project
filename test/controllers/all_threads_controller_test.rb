@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class EmailThreadsControllerTest < ActionController::TestCase
+class AllThreadsControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

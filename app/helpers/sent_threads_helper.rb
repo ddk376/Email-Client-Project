@@ -1,0 +1,2 @@
+module SentThreadsHelper
+end

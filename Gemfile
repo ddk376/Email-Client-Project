@@ -32,6 +32,12 @@ gem 'bcrypt'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'figaro'
+gem 'sendgrid-ruby'
+gem 'kaminari'
+gem "paperclip"
+gem 'aws-sdk', '~> 1.6'
+gem 'pg_search'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

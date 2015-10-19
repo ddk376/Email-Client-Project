@@ -37,33 +37,19 @@ class ElectronicMail < ActiveRecord::Base
     foreign_key: :parent_email_id,
     dependent: :destroy
 
-  attr_reader :sent
+  attr_reader :sent,:receivers, :bcc_receivers, :cc_receivers
+  after_save :add_recipients
 
   def to=(receiver_emails)
-    # update_has_been_in_contact(receiver_emails) if @sent
-    self.recipients.clear # should be able to optimize this
-    receiver_emails.each do |recipient_email|
-      contact = Contact.find_by(email: recipient_email) || Contact.create(email: recipient_email)
-      self.recipients.new(contact_id: contact.id)
-    end
+    @receivers = receiver_emails
   end
 
-  def to_bcc=(bcc_receivers)
-    # update_has_been_in_contact(bcc_receivers) if @sent
-    self.recipients.clear
-    bcc_receivers.each do |recipient_email|
-      contact = Contact.find_by(email: recipient_email) || Contact.create(email: recipient_email)
-      self.bcc_recipients.new(contact_id: contact.id)
-    end if !bcc_receivers.nil?
+  def to_bcc=(receiver_emails)
+    @bcc_receivers = receiver_emails
   end
 
-  def to_cc=(cc_receivers)
-    # update_has_been_in_contact(cc_receivers) if @sent
-    self.recipients.clear
-    cc_receivers.each do |recipient_email|
-      contact = Contact.find_by(email: recipient_email) || Contact.create(email: recipient_email)
-      self.cc_recipients.new(contact_id: contact.id)
-    end if !cc_receivers.nil?
+  def to_cc=(receiver_emails)
+    @cc_receivers = receiver_emails
   end
 
   def subject=(string)
@@ -75,6 +61,26 @@ class ElectronicMail < ActiveRecord::Base
     self.is_draft = false if @sent
   end
 
+  private
+  def add_recipients
+    self.recipients.clear
+    self.bcc_recipients.clear
+    self.cc_recipients.clear
+    count = 0
+    [@receivers, @bcc_receivers, @cc_receivers].each do |receivers|
+      receivers.each do |receiver_email|
+        contact = Contact.find_by(email: receiver_email) || Contact.create(email: receiver_email)
+        if count == 0
+          self.recipients.create(contact_id: contact.id)
+        elsif count == 1
+          self.bcc_recipients.create(contact_id: contact.id)
+        else
+          self.cc_recipients.create(contact_id: contact.id)
+        end
+      end
+      count += 1
+    end
+  end
   # def update_has_been_in_contact(emails)
   #   emails.each do |email|
   #     contact = Contact.find_by(email: email) || Contact.create(email: recipient_email)
