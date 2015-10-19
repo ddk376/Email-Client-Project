@@ -5,7 +5,18 @@ class User < ActiveRecord::Base
 
   attr_reader :password
   after_initialize :ensure_session_token
+  after_initialize :ensure_associated_contact_info
 
+  has_one :associated_contact_info,
+    class_name: 'Contact',
+    foreign_key: :email,
+    primary_key: :email
+
+  has_many :contacted,
+   class_name: 'HasContact',
+   foreign_key: :user_id
+
+  has_many :contacts, through: :contacted, source: :been_in_contact_with
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
@@ -27,16 +38,13 @@ class User < ActiveRecord::Base
     self.session_token
   end
 
-  def inbox_count
-    self.received_emails.where(is_draft: "false", is_read: "false").length
-  end
-
-  def draft_count
-    self.sent_emails.where(is_draft: true).length
-  end
 
   protected
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64(16)
+  end
+
+  def ensure_associated_contact_info
+    self.associated_contact_info ||= Contact.new(email: self.email)
   end
 end

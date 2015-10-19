@@ -1,5 +1,7 @@
-class CreateRecipients < ActiveRecord::Migration
+class AlterRecipient < ActiveRecord::Migration
   def change
+    drop_table :recipients
+
     create_table :recipients do |t|
       t.integer :email_id
       t.integer :contact_id
