@@ -36,21 +36,40 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    annotate (2.6.10)
+      activerecord (>= 3.2, <= 4.3)
+      rake (~> 10.4)
     arel (6.0.3)
+    autoprefixer-rails (5.1.10)
+      execjs
+      json
     aws-sdk (1.66.0)
       aws-sdk-v1 (= 1.66.0)
     aws-sdk-v1 (1.66.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
+    backbone-on-rails (1.1.2.1)
+      eco
+      ejs
+      jquery-rails
+      railties
     bcrypt (3.1.10)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.4.1)
+      autoprefixer-rails (>= 5.0.0.1)
+      sass (>= 3.2.19)
     builder (3.2.2)
     byebug (6.0.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.7)
       climate_control (>= 0.0.3, < 1.0)
+    coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -61,6 +80,12 @@ GEM
     debug_inspector (0.0.2)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
+    eco (1.0.0)
+      coffee-script
+      eco-source
+      execjs
+    eco-source (1.1.0.rc.1)
+    ejs (1.1.1)
     erubis (2.7.0)
     execjs (2.6.0)
     figaro (1.1.1)
@@ -85,6 +110,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    method_source (0.8.2)
     mime-types (2.6.2)
     mimemagic (0.3.0)
     mini_portile (0.6.2)
@@ -104,6 +130,12 @@ GEM
       activerecord (>= 3.1)
       activesupport (>= 3.1)
       arel
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -156,6 +188,7 @@ GEM
     sendgrid-ruby (0.0.3)
       rest-client
       smtpapi
+    slop (3.6.0)
     smtpapi (0.1.0)
     spring (1.4.0)
     sprockets (3.4.0)
@@ -187,8 +220,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   aws-sdk (~> 1.6)
+  backbone-on-rails
   bcrypt
+  better_errors
+  binding_of_caller
+  bootstrap-sass
   byebug
   coffee-rails (~> 4.1.0)
   figaro
@@ -198,6 +236,7 @@ DEPENDENCIES
   paperclip
   pg
   pg_search
+  pry-rails
   rails (= 4.2.4)
   rails_12factor
   sass-rails (~> 5.0)

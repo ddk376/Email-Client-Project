@@ -191,8 +191,10 @@ header.header nav.header {
   display: block;
 }
 .empty-category-message {
-  display: block;
+  position:relative;
   width: 95%;
+
+  display: block;
   text-align: center;
   padding: 10px;
   border-bottom: 1px solid #ccc;
@@ -280,7 +282,7 @@ header.header nav.header {
   border: 1px solid #ccc;
 
 }
-main section.sidebar {
+.sidebar {
   width: 210px;
   margin-right: 1px;
   float: left;
@@ -289,7 +291,7 @@ main section.sidebar {
 }
 
 
-main section.sidebar button {
+.sidebar button {
   min-width: 115px;
   background-color: #d14836;
   border: 1px solid transparent;
@@ -328,19 +330,18 @@ main section.sidebar button {
 .sidebar .folder li.selected a {
   color: #d14836;
 }
-main section.main {
+.indexview {
   background-color: white;
   font-size: 80%;
-
+  margin-left: 210px;
   min-height: 741px;
 
 }
-
-main section.main form.create-email {
+.indexview form.create-email {
   margin-left: 210px;
   border: 2px solid gray;
 }
-main section.main form.create-email > input {
+.indexview form.create-email > input {
   border: 0px solid;
   height: 41px;
   font-size: 13px;
@@ -348,18 +349,18 @@ main section.main form.create-email > input {
   min-width: 470px;
   max-width: 1056px;
 }
-main section.main form.create-email > input:focus {
+.indexview form.create-email > input:focus {
   outline: none
 }
 
-main section.main form.create-email > nav {
+.indexview form.create-email > nav {
   background-color: #404040;
   color: white;
   height: 30px;
   vertical-align: middle;
 }
 
-main section.main form.create-email nav > span{
+.indexview form.create-email nav > span{
   margin: auto;
   display: inline-block;
   vertical-align: middle;
@@ -367,7 +368,7 @@ main section.main form.create-email nav > span{
   font-family: arial,sans-serif;
   font-size: 13px;
 }
-main section.main form.create-email textarea#email_body {
+.indexview form.create-email textarea#email_body {
   min-height: 551px;;
   width: 549px;
   z-index: -2;
@@ -377,12 +378,12 @@ main section.main form.create-email textarea#email_body {
   font-size: 13px;
 }
 
-main section.main form.create-email footer.email-form-footer {
+.indexview form.create-email footer.email-form-footer {
   border-top:  1px solid rgb(237,237,237);
   background-color: #e5e5e5;
   height: 44px;
 }
-main section.main form.create-email footer.email-form-footer button {
+.indexview form.create-email footer.email-form-footer button {
   background-color: #4d90fe;
   border: 1px solid #3079ed;
   color: #fff;
@@ -396,4 +397,120 @@ main section.main form.create-email footer.email-form-footer button {
   line-height: 27px;
   min-width: 54px;
   padding: 0 8px;
+}
+.email-show {
+  padding: 15px 0;
+  list-style: none;
+  width: 97%;
+  border-bottom: 1px solid #ccc;
+  background: #e5e5e5
+}
+
+.unread{
+  background: #fff;
+}
+.email-show li {
+  display: block;
+  float: left;
+}
+
+.checkbox, .star, .important {
+  padding: 0 5px;
+}
+
+.email-show {
+  cursor: pointer;
+}
+
+.email-show-render > h1 {
+  padding-top: 10px;
+  font-size: 24px;
+}
+
+.email-show-render hr {
+  width: 80%;
+  float: left;
+  font-weight: lighter;
+}
+
+.email-show-render-body {
+  width: 78%
+}
+
+.email-show .from{
+  display: block;
+  width: 15%;
+}
+
+.email-show .subject_body{
+  display: block;
+  width: 65%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.email-show .paperclip{
+  display: block;
+   width: 5%;
+}
+
+.email-show .date_time{
+  float: right;
+  display: block;
+  width: 5%;
+  padding: 0 10px;
+}
+.grey {
+  display: inline;
+  color: #aaa;
+}
+input[type=checkbox]{
+  border-radius: 0;
+}
+
+.star-five{
+  padding-right: 10px;
+}
+
+.important {
+  padding-right: 10px;
+}
+
+
+.create-email {
+  display: block;
+  height: 20%;
+  width: 50%;
+}
+.create-email .to,
+.create-email .cc,
+.create-email .bcc,
+.create-email .subject{
+  width: 100%;
+  display: table;
+  border-bottom: 1px solid #ccc;
+}
+.create-email label {
+  display: table-cell;
+  width: 10px;
+  padding: 10px;
+}
+.create-email input{
+  padding: 10px 0;
+  width: 100%;
+}
+
+.submitLink {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: block;
+  padding: 5px 20px;
+  position: relative;
+  // margin-right: 20px;
+  color: black;
+  padding-left: 18px;
+}
+
+.submitLink:hover {
+  background-color: rgb(237,237,237);
 }

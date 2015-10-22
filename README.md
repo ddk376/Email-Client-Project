@@ -6,6 +6,7 @@
 - [x] Sign in / Sign Out
 - [x] Demo User
 - [ ] Create, show, delete, edit email threads
+- [ ] New emails
 - [ ] Reply to
 - [ ] Multiple Recipients, Bcc Recipients, Cc Recipients
 - [ ] Send Email

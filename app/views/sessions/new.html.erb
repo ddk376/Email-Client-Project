@@ -13,7 +13,9 @@
   <input type="hidden"
          name="authenticity_token"
          value="<%= form_authenticity_token %>">
-  <input name="user[email]" type="text" value="Enter your Email"><br>
+         <input name="user[email]" type="text" value="Enter your Email"
+               onfocus="if (this.value =='Enter your Email') this.value='';"
+               onfocusout="if (this.value =='') this.value='Enter your Email';"><br>
   <input name="user[password]" type="password" value=""><br>
   <input type="submit" value="Submit"><br>
 </form>
@@ -28,7 +30,7 @@
   <input type="hidden"
          name="authenticity_token"
          value="<%= form_authenticity_token %>">
-  <input name="user[email]" type="hidden" value="test1@test.com">
+  <input name="user[email]" type="hidden" value="test@noofel.com">
   <input name="user[password]" type="hidden" value="password"><br>
   <input type="submit" value="Demo User"><br>
 </form>

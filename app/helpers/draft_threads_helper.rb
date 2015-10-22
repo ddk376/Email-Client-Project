@@ -1,2 +1,0 @@
-module DraftThreadsHelper
-end

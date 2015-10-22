@@ -1,2 +1,0 @@
-module ImportantThreadsHelper
-end

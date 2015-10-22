@@ -1,0 +1,27 @@
+<% if (emails.models.length === 0) { %>
+    <span class="empty-category-message">There are no messages in this category</span>
+<% }else { %>
+
+  <% _.each(emails.models, function(email){ %>
+      <ul class="email-show group<% if(email.escape('is_read') ==='false'){ %> unread <% } %>" data-id="<%= email.escape('id') %>">
+        <% var date = new Date(email.escape('created_at') ) %>
+        <li class="checkbox" data-id="<%= email.escape('id') %>">
+          <input type="checkbox" <% if (email.escape("is_checked") === "true"){ %>
+          checked
+          <%  } %> >
+        </li>
+        <li class="star" data-id="<%= email.escape('id') %>"><input type="checkbox" <% if (email.escape("is_starred") === "true"){ %>
+          checked
+      <%  } %> ></li>
+        <li class="important" data-id="<%= email.escape('id') %>"><input type="checkbox" <% if (email.escape("is_important") === "true"){ %>
+          checked
+      <%  } %> ></li>
+        <li class="from" data-id="<%= email.escape('id') %>"><span><%= email.escape('from') %> <% if (email.escape('is_draft') === "true"){ %>
+          <span class="red">Draft</span>
+        <% }; %>  </span></li>
+        <li class="subject_body" data-id="<%= email.escape('id') %>"><%= email.escape('subject') %> <div class="grey">- <%= email.escape('body') %></div></li>
+        <li class="paperclip" data-id="<%= email.escape('id') %>"> <% if (edit == true) { %> <a href="#/emails/<%= email.escape('id') %>/edit">Edit</a><% } %></li>
+        <li class="date_time" data-id="<%= email.escape('id') %>"> <%= email.getDateOrTime() %></li>
+      </ul>
+  <%  }) %>
+<% }%>

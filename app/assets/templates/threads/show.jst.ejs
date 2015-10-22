@@ -1,0 +1,18 @@
+<div class="email-show-render">
+
+<h1><%= email.escape('subject') %></h1>
+<hr><br>
+<div class="email-dropdown">
+  <p>from: <%= email.escape('from') %></p>
+  <p>to: <%= email.escape('to') %></p>
+  <p>subject: <%= email.escape('subject') %></p>
+  <p>created_at: <%= email.escape('created_at') %></p>
+</div>
+<br><br>
+<div class="email-show-render-body">
+  <%= email.escape("body") %>
+</div>
+
+<br><br>
+<hr>
+</div>

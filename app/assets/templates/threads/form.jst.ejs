@@ -1,0 +1,30 @@
+<nav>
+  <span>New Message</span>
+</nav>
+<div class="to">
+<label for="email_to">To</label>
+<input id="email_to" name="electronic_mail[to]" type="text" value="<%= email.escape('to') %>"><br>
+</div>
+<div class="cc">
+<label for="email_cc">Cc</label>
+<input id="email_cc" name="electronic_mail[cc]" type="text" value="<%= email.escape('cc') %>"><br>
+</div>
+<div class="bcc">
+<label for="email_bcc">Bcc</label>
+<input id="email_bcc" name="electronic_mail[bcc]" type="text" value="<%= email.escape('bcc') %>"><br>
+</div>
+
+<div class="subject">
+<label for="email_subject">Subject</label>
+<input id="email_subject" name="electronic_mail[subject]" type="text" value="<%= email.escape('subject')  %>"> <br>
+</div>
+
+<label for="email_body"></label>
+<textarea id="email_body" name="electronic_mail[body]"><%= email.escape('body')  %></textarea>
+<br>
+
+<input type="file" name="electronic_mail[file_avatar]" id="input-file-attachment">
+<footer class="email-form-footer">
+<button type="button" name="button">Send</button>
+
+</footer>
