@@ -1,5 +1,5 @@
-Email.Collections.EmailThreads = Backbone.Collection.extend({
-  url: 'api/email_threads',
+Email.Collections.SpamThreads = Backbone.Collection.extend({
+  url: 'api/spam_threads',
   model: Email.Models.EmailThread,
   comparator: 'updated_at',
   getOrFetch: function(id){

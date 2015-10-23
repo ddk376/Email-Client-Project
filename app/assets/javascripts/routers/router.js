@@ -5,13 +5,67 @@ Email.Routers.Router = Backbone.Router.extend({
   },
   routes:{
     '': 'inbox',
-    'email_threads/:id' : 'show',
-    'starred' : 'index'
+    'inbox_threads/:id' : 'show',
+    'starred' : 'starred',
+    'important': 'important',
+    'draft': 'draft',
+    'spam': 'spam',
+    'trash': 'trash',
+    'sent': 'sent'
   },
 
   inbox: function(){
     debugger
-    this.collection = new Email.Collections.EmailThreads();
+    this.collection = new Email.Collections.InboxThreads();
+    var view = new Email.Views.ThreadsIndex({collection: this.collection, edit: false, delete: false});
+
+    this._swapView(view);
+  },
+
+  starred: function(){
+    this.collection = new Email.Collections.StarredThreads();
+    var view = new Email.Views.ThreadsIndex({collection: this.collection, edit: false, delete: false});
+
+    this._swapView(view);
+  },
+
+  important: function(){
+    this.collection = new Email.Collections.ImportantThreads();
+    var view = new Email.Views.ThreadsIndex({collection: this.collection, edit: false, delete: false});
+
+    this._swapView(view);
+  },
+
+  sent: function(){
+    this.collection = new Email.Collections.SentThreads();
+    var view = new Email.Views.ThreadsIndex({collection: this.collection, edit: false, delete: false});
+
+    this._swapView(view);
+  },
+
+  all: function(){
+    this.collection = new Email.Collections.AllThreads();
+    var view = new Email.Views.ThreadsIndex({collection: this.collection, edit: false, delete: false});
+
+    this._swapView(view);
+  },
+
+  draft: function(){
+    this.collection = new Email.Collections.DraftThreads();
+    var view = new Email.Views.ThreadsIndex({collection: this.collection, edit: false, delete: false});
+
+    this._swapView(view);
+  },
+
+  spam: function(){
+    this.collection = new Email.Collections.SpamThreads();
+    var view = new Email.Views.ThreadsIndex({collection: this.collection, edit: false, delete: false});
+
+    this._swapView(view);
+  },
+
+  trash: function(){
+    this.collection = new Email.Collections.TrashThreads();
     var view = new Email.Views.ThreadsIndex({collection: this.collection, edit: false, delete: false});
 
     this._swapView(view);

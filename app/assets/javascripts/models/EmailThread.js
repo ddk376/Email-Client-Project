@@ -1,5 +1,4 @@
 Email.Models.EmailThread = Backbone.Model.extend({
-   urlRoot: 'api/email_threads',
    getDateOrTime: function(){
      var result = "";
      var date24hrsago = new Date().getTime() - (24 *3600);
