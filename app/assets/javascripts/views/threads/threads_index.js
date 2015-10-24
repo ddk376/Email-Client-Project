@@ -32,7 +32,7 @@ Email.Views.ThreadsIndex = Backbone.View.extend({
   },
   showThread: function(e){
     var id = $(e.currentTarget).data('id');
-    Backbone.history.navigate("#/email_threads/" + id, {trigger: true});
+    Backbone.history.navigate("#/email_threads/" + id + "/emails", {trigger: true});
   },
   mark: function(e){
     var id = $(e.currentTarget).data('id');

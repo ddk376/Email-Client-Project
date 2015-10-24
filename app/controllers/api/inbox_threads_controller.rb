@@ -3,7 +3,7 @@ class Api::InboxThreadsController < ApplicationController
   include EmailsHelper
   def index
     cu = current_user.associated_contact_info
-    @threads = cu.received_threads
+    @threads = cu.inbox_threads
     render json: @threads, include: :emails
   end
 

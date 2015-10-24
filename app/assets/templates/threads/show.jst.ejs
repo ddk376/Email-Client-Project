@@ -1,17 +1,23 @@
 <div class="email-show-render">
 
-<h1><%= email.escape('subject') %></h1>
+<h1><%= thread.escape('subject') %></h1>
 <hr><br>
-<div class="email-dropdown">
-  <p>from: <%= email.escape('from') %></p>
-  <p>to: <%= email.escape('to') %></p>
-  <p>subject: <%= email.escape('subject') %></p>
-  <p>created_at: <%= email.escape('created_at') %></p>
+<div class="email">
 </div>
-<br><br>
-<div class="email-show-render-body">
-  <%= email.escape("body") %>
-</div>
+<!-- <#% thread.emails().each(function(email){ %>
+  <ul>
+    <li>from: <%#= email.escape('from') %></li>
+    <li>to: </li>
+    <li>date: <%#= email.escape('updated_at') %></li>
+    <li>subject: <%#= thread.escape('subject') %></li>
+  </ul>
+  <br>
+  <br>
+  <%#= email.escape('body') %>
+<% }) %> -->
+<!-- <div class="email-show-render-body">
+
+</div> -->
 
 <br><br>
 <hr>

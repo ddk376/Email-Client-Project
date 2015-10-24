@@ -1,0 +1,15 @@
+<ul>
+  <li>from: <%= email.escape('from') %></li>
+  <li>to: <%= email.to().each { |to| to.escape('email') }.join(',') }%> </li>
+  <% if email.bcc().length > 0 %>
+    <li> <%= email.bcc().each {|bcc| bcc.escape('email')}.join(',') %></li>
+  <% end %>
+  <% if email.cc().length > 0 %>
+    <li> <%= email.cc().each {|cc| cc.escape('email')}.join(',') %></li>
+  <% end %>
+  <li>date: <%= email.escape('updated_at') %></li>
+  <li>subject: <%= thread.escape('subject') %></li>
+</ul>
+<br>
+<br>
+<%= email.escape('body') %>

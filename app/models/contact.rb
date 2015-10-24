@@ -48,35 +48,12 @@ class Contact < ActiveRecord::Base
     through: :emails_received_as_cc,
     source: :email_thread
 
-  def received_threads
-    EmailThread.find_by_sql("SELECT
-                    *
-                  FROM
-                    email_threads t
-                  JOIN electronic_mails e ON t.id = e.email_thread_id
-                  JOIN recipients r ON e.id = r.email_id
-                  JOIN contacts rc ON r.contact_id = rc.id
-                  JOIN bcc_recipients b ON e.id = b.email_id
-                  JOIN contacts bc ON b.contact_id = bc.id
-                  JOIN cc_recipients c ON e.id = c.email_id
-                  JOIN contacts cc ON c.contact_id = cc.id
-                  WHERE (rc.email = '#{self.email}'
-                  OR bc.email = '#{self.email}'
-                  OR cc.email = '#{self.email}')
-                  AND t.is_trash = false
-                  AND t.is_spam = false")
+  def inbox_threads
+    self.received_threads + self.bcc_threads + self.cc_threads
   end
 
   def sent_threads
-    EmailThread.find_by_sql("SELECT
-                    *
-                  FROM
-                    email_threads t
-                  JOIN electronic_mails e ON t.id = e.email_thread_id
-                  WHERE e.from = '#{self.email}'
-                  AND e.is_draft = false
-                  AND t.is_trash = false
-                  AND t.is_spam = false")
+    self.sent_email_threads
   end
 
   def draft_threads
@@ -169,25 +146,7 @@ class Contact < ActiveRecord::Base
   end
 
   def all_threads
-    EmailThread.find_by_sql("SELECT
-                    *
-                  FROM
-                    email_threads t
-                  JOIN electronic_mails e ON t.id = e.email_thread_id
-                  JOIN recipients r ON e.id = r.email_id
-                  JOIN contacts rc ON r.contact_id = rc.id
-                  JOIN bcc_recipients b ON e.id = b.email_id
-                  JOIN contacts bc ON b.contact_id = bc.id
-                  JOIN cc_recipients c ON e.id = c.email_id
-                  JOIN contacts cc ON c.contact_id = cc.id
-                  WHERE rc.email = '#{self.email}'
-                  OR bc.email = '#{self.email}'
-                  OR cc.email = '#{self.email}'") + EmailThread.find_by_sql("SELECT
-                    *
-                  FROM
-                    email_threads t
-                  JOIN electronic_mails e ON t.id = e.email_thread_id
-                  WHERE e.from = '#{self.email}'")
+    self.received_threads + self.bcc_threads + self.cc_threads + self.sent_email_threads
   end
 
   def spam_threads

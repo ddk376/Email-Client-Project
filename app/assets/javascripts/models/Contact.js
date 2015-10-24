@@ -1,10 +1,8 @@
-Email.Models.EmailThread = Backbone.Model.extend({
-   urlRoot: 'api/email_threads',
-   emails: function(){
-     if(!this._emails){
-       this._emails = new Email.Collections.Emails([], {email_thread: this})
-     }
-     return this._emails;
+Email.Models.Contact = Backbone.Model.extend({
+   urlRoot: function(){
+     return 'api/email_threads/' + this.id + '/'},
+   to: function(){
+
    },
    getDateOrTime: function(){
      var result = "";
@@ -46,5 +44,3 @@ Email.Models.EmailThread = Backbone.Model.extend({
       }
     });
   }
-
-})

@@ -402,6 +402,7 @@ header.header nav.header {
   padding: 15px 0;
   list-style: none;
   width: 97%;
+  max-height: 15px;
   border-bottom: 1px solid #ccc;
   background: #e5e5e5
 }
@@ -499,18 +500,8 @@ input[type=checkbox]{
   width: 100%;
 }
 
-.submitLink {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  display: block;
-  padding: 5px 20px;
-  position: relative;
-  // margin-right: 20px;
-  color: black;
-  padding-left: 18px;
-}
 
-.submitLink:hover {
-  background-color: rgb(237,237,237);
+.email-show-render h1 {
+  font-weight: normal;
+  font-size: 16px;
 }

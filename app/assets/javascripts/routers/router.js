@@ -5,17 +5,16 @@ Email.Routers.Router = Backbone.Router.extend({
   },
   routes:{
     '': 'inbox',
-    'inbox_threads/:id' : 'show',
     'starred' : 'starred',
     'important': 'important',
     'draft': 'draft',
     'spam': 'spam',
     'trash': 'trash',
-    'sent': 'sent'
+    'sent': 'sent',
+    'email_threads/:id/emails': 'show'
   },
 
   inbox: function(){
-    debugger
     this.collection = new Email.Collections.InboxThreads();
     var view = new Email.Views.ThreadsIndex({collection: this.collection, edit: false, delete: false});
 
@@ -72,13 +71,17 @@ Email.Routers.Router = Backbone.Router.extend({
   },
 
   show: function(id){
-    this.collection = new Email.Collections.EmailThreads();
-    var showThread = this.collection.getOrFetch(id);
-    var view = new Email.Views.ThreadShow({model: showThread});
+    if(this.collection){
+      var showThread = this.collection.getOrFetch(id)
+      showThread.emails().fetch();
+      var view = new Email.Views.ThreadShow({collection: this. collection,model: showThread});
 
-    this._swapView(view);
-
+      this._swapView(view);
+    } else {
+      Backbone.history.navigate("");
+    }
   },
+
   edit: function(id){
     debugger
     this.collection = new Email.Collections.ElectronicMails();

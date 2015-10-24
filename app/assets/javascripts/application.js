@@ -16,6 +16,7 @@
 //= require backbone
 //= require email
 //= require_tree ../templates
+//= requite_tree ./utils
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views
