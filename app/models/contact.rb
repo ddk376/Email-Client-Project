@@ -48,8 +48,9 @@ class Contact < ActiveRecord::Base
     through: :emails_received_as_cc,
     source: :email_thread
 
+
   def inbox_threads
-    self.received_threads + self.bcc_threads + self.cc_threads
+    self.received_threads.select{ |thread| thread.is_trash == false && thread.is_spam == false} + self.bcc_threadsselect{ |thread| thread.is_trash == false && thread.is_spam == false} + self.cc_threadsselect{ |thread| thread.is_trash == false && thread.is_spam == false}
   end
 
   def sent_threads

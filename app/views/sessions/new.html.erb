@@ -13,10 +13,10 @@
   <input type="hidden"
          name="authenticity_token"
          value="<%= form_authenticity_token %>">
- <input name="user[email]" type="text" value="Enter your Email"
-       onfocus="if (this.value =='Enter your Email') this.value='';"
-       onfocusout="if (this.value =='') this.value='Enter your Email';"><br>
-  <input name="user[password]" type="password" value=""><br>
+ <input class="username grey" name="user[email]" type="text" value="Enter your Email"
+       onfocus="userValue()" onfocusout="userValue()"><br>
+  <input class="password grey" name="user[password]" type="text" value="Password"
+       onfocus="passwordValue()" onfocusout="passwordValue()"><br>
   <input type="submit" value="Submit"><br>
 </form>
 </div>
@@ -36,16 +36,35 @@
 </form>
 </div>
 
-<script>
-  $(document).ready(function(){
-    var inputList = $('input');
-    var username = inputList.first();
-    console.log(username.value);
-  });
-</script>
-<script type="text/javascript">
 
+<script type="text/javascript">
   function userValue(){
-    var uname = document.getElementByClassName('username');
+    var uname = $('.username');
+    if(uname.val() == 'Enter your Email'){
+      uname.val('');
+      uname.removeClass('grey');
+      uname.addClass('black');
+    }else if(uname.val() == ''){
+      uname.val('Enter your Email');
+      uname.removeClass('black');
+      uname.addClass('grey');
+    }else{
+
+    }
+  };
+
+  function passwordValue(){
+    var pwd = $('.password');
+    if( pwd.val() == 'Password'){
+      pwd.val('');
+      pwd.removeClass('grey').addClass('black');
+      pwd.attr('type', 'password');
+    }else if (pwd.val() == ''){
+      pwd.removeClass('black').addClass('grey');
+      pwd.attr('type', 'text');
+      pwd.val('Password');
+    }else{
+
+    }
   }
 </script>
