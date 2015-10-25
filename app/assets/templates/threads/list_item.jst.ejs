@@ -4,15 +4,10 @@
   checked
   <%  } %> >
 </span>
-<span class="star" ><input type="checkbox" <% if (email.escape("is_starred") === "true"){ %>
-  checked
-<%  } %> ></span>
-<span class="important" ><input type="checkbox" <% if (email.escape("is_important") === "true"){ %>
-  checked
-<%  } %> ></span>
+<div class="star is-starred"></div>
+<div class="important is-important" ></div>
 <span class="from"><span><%= email.escape('from') %> <% if (email.escape('is_draft') === "true"){ %>
-  <span class="red">Draft</span>
 <% }; %>  </span></span>
-<span class="subject_body" ><%= email.escape('subject') %> <div class="grey">- <%= last.escape('body') %></div></span>
+<span class="subject_body" ><%= email.escape('subject') %> <div class="grey">- </div></span>
 <span class="paperclip" > <% if (edit == true) { %> <a href="#/emails/<%= email.escape('id') %>/edit">Edit</a><% } %></span>
-<span class="date_time"> <%= last.getDateOrTime() %></span>
+<span class="date_time"> <%= email.getDateOrTime() %></span>

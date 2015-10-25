@@ -8,6 +8,7 @@ Email.Views.ThreadsIndex = Backbone.View.extend({
       data: {page: this._page},
       success: function(){}
     })
+    this.collection.fetch({success: function(){ debugger}.bind(this)});
     this.listenTo(this.collection, 'sync', this.render);
     $('.nextpage').click(this.nextPage.bind(this));
     $('.prevpage').click(this.prevPage.bind(this));
@@ -18,13 +19,12 @@ Email.Views.ThreadsIndex = Backbone.View.extend({
 
   render: function(){
     this.collection.sort();
-
-    var content = this.template({emails: this.collection, edit: this.edit, delete: this.delete});
+    var content = this.template({emails: this.collection});
     this.$el.html(content);
     var that = this;
     this.collection.each(function (thread) {
       thread.emails().fetch();
-      var view = new Email.Views.ThreadListItem({ model: thread });
+      var view = new Email.Views.ThreadListItem({ model: thread, edit: this.edit, delete: this.delete});
       that.$el.append(view.render().$el);
     });
 

@@ -25,10 +25,10 @@
   function userValue(){
     var uname = $('.username');
     if(uname.val() == 'username@noofel.com'){
-      uname.val('');
+      uname.val('@noofel.com');
       uname.removeClass('grey');
       uname.addClass('black');
-    }else if(uname.val() == ''){
+    }else if(uname.val() == '@noofel.com'){
       uname.val('username@noofel.com');
       uname.removeClass('black');
       uname.addClass('grey');

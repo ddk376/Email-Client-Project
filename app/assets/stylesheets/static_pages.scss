@@ -35,7 +35,9 @@ img{
   clear: both;
 }
 
-
+body {
+  min-width: 1300px;
+}
 header.header {
   height: 60px;
   border-bottom: 1px solid #e5e5e5;
@@ -276,7 +278,7 @@ header.header nav.header {
   margin-left: 15px;
 }
 .functionality-pagination-settings > li > button {
-  padding: 6px 15px;
+  padding: 6px 15px 6px 15px;
   background: rgb(240,240,240);
   border-radius: 2px;
   border: 1px solid #ccc;
@@ -337,74 +339,14 @@ header.header nav.header {
   min-height: 741px;
 
 }
-.indexview form.create-email {
-  margin-left: 210px;
-  border: 2px solid gray;
-}
-.indexview form.create-email > input {
-  border: 0px solid;
-  height: 41px;
-  font-size: 13px;
-  background: transparent;
-  min-width: 470px;
-  max-width: 1056px;
-}
-.indexview form.create-email > input:focus {
-  outline: none
-}
 
-.indexview form.create-email > nav {
-  background-color: #404040;
-  color: white;
-  height: 30px;
-  vertical-align: middle;
-}
-
-.indexview form.create-email nav > span{
-  margin: auto;
-  display: inline-block;
-  vertical-align: middle;
-  padding: 4px 0 0 6px;
-  font-family: arial,sans-serif;
-  font-size: 13px;
-}
-.indexview form.create-email textarea#email_body {
-  min-height: 551px;;
-  width: 549px;
-  z-index: -2;
-  border: 0px;
-  resize: none;
-  outline: none;
-  font-size: 13px;
-}
-
-.indexview form.create-email footer.email-form-footer {
-  border-top:  1px solid rgb(237,237,237);
-  background-color: #e5e5e5;
-  height: 44px;
-}
-.indexview form.create-email footer.email-form-footer button {
-  background-color: #4d90fe;
-  border: 1px solid #3079ed;
-  color: #fff;
-  border-radius: 2px;
-  cursor: default;
-  font-size: 11px;
-  font-weight: bold;
-  text-align: center;
-  white-space: nowrap;
-  height: 27px;
-  line-height: 27px;
-  min-width: 54px;
-  padding: 0 8px;
-}
 .email-show {
-  padding: 15px 0;
+  padding: 12px 0;
   list-style: none;
-  width: 97%;
-  max-height: 15px;
+  width: 99%;
+  min-width: 500px;
+  min-height: 15px;
   border-bottom: 1px solid #ccc;
-  background: #e5e5e5
 }
 
 .unread{
@@ -438,25 +380,25 @@ header.header nav.header {
   width: 78%
 }
 
-.email-show .from{
-  display: block;
+.email-show span.from{
+  display: inline-block;
   width: 15%;
 }
 
-.email-show .subject_body{
-  display: block;
+.email-show span.subject_body{
+  display: inline-block;
   width: 65%;
   white-space: nowrap;
   overflow: hidden;
 }
-.email-show .paperclip{
-  display: block;
+.email-show span.paperclip{
+  display: inline-block;
    width: 5%;
 }
 
-.email-show .date_time{
+.email-show span.date_time{
   float: right;
-  display: block;
+  display: inline-block;
   width: 5%;
   padding: 0 10px;
 }

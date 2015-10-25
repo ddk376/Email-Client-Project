@@ -14,12 +14,12 @@ Email.Routers.Router = Backbone.Router.extend({
     'email_threads/:id/emails': 'show'
   },
 
-  // inbox: function(){
-  //   this.collection = new Email.Collections.InboxThreads();
-  //   var view = new Email.Views.ThreadsIndex({collection: this.collection, edit: false, delete: false});
-  //
-  //   this._swapView(view);
-  // },
+  inbox: function(){
+    this.collection = new Email.Collections.InboxThreads();
+    var view = new Email.Views.ThreadsIndex({collection: this.collection, edit: false, delete: false});
+
+    this._swapView(view);
+  },
 
   starred: function(){
     this.collection = new Email.Collections.StarredThreads();

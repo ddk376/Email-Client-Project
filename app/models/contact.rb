@@ -50,7 +50,7 @@ class Contact < ActiveRecord::Base
 
 
   def inbox_threads
-    self.received_threads.select{ |thread| thread.is_trash == false && thread.is_spam == false} + self.bcc_threadsselect{ |thread| thread.is_trash == false && thread.is_spam == false} + self.cc_threadsselect{ |thread| thread.is_trash == false && thread.is_spam == false}
+    self.received_threads.select{ |thread| thread.is_trash == false && thread.is_spam == false} + self.bcc_threads.select{ |thread| thread.is_trash == false && thread.is_spam == false} + self.cc_threads.select{ |thread| thread.is_trash == false && thread.is_spam == false}
   end
 
   def sent_threads

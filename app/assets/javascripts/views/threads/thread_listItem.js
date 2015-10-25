@@ -2,6 +2,7 @@
 Email.Views.ThreadListItem = Backbone.View.extend({
   template: JST['threads/list_item'],
   tagName: 'li',
+  className: 'email-show',
   events:{
     "click .from": 'showThread',
     'click .subject_body': 'showThread',
@@ -11,15 +12,17 @@ Email.Views.ThreadListItem = Backbone.View.extend({
     'click .star': 'markStarred',
     'click .important': 'markImportant'
   },
-  initialize: function(){
+  initialize: function(options){
+    this.edit = options.edit;
+    this.delete = options.delete;
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.model.emails(), "sync", this.render);
   },
 
   render: function(){
-    var count = this.model.length();
-    var last = this.model.emails().last();
-    var content = this.template({model: thread, email: last, count: count});
+    var count = this.model.length;
+    // var last = this.model.emails().last();
+    var content = this.template({email: this.model, count: count, edit: this.edit, delete: this.delete});
 
     this.$el.html(content);
 
