@@ -1,8 +1,6 @@
 Email.Models.Contact = Backbone.Model.extend({
    urlRoot: function(){
-     return 'api/email_threads/' + this.id + '/'},
-   to: function(){
-
+     return 'api/email_threads/' + this.id + '/'
    },
    getDateOrTime: function(){
      var result = "";
@@ -44,3 +42,4 @@ Email.Models.Contact = Backbone.Model.extend({
       }
     });
   }
+});

@@ -1,5 +1,6 @@
 Email.Views.ThreadsIndex = Backbone.View.extend({
   template: JST['threads/index'],
+  tagName: 'ul',
   initialize: function(options){
     // this._page = 1;
     this.collection.fetch({
@@ -14,67 +15,22 @@ Email.Views.ThreadsIndex = Backbone.View.extend({
     this.edit = options.edit;
     this.delete = options.delete;
   },
-  events:{
-    "click .from": 'showThread',
-    'click .subject_body': 'showThread',
-    'click .paperclip': 'showThread',
-    'click .date_time': 'showThread',
-    'click .checkbox': 'mark',
-    'click .star': 'markStarred',
-    'click .important': 'markImportant'
-  },
+
   render: function(){
     this.collection.sort();
+
     var content = this.template({emails: this.collection, edit: this.edit, delete: this.delete});
     this.$el.html(content);
+    var that = this;
+    this.collection.each(function (thread) {
+      thread.emails().fetch();
+      var view = new Email.Views.ThreadListItem({ model: thread });
+      that.$el.append(view.render().$el);
+    });
 
     return this;
   },
-  showThread: function(e){
-    var id = $(e.currentTarget).data('id');
-    Backbone.history.navigate("#/email_threads/" + id + "/emails", {trigger: true});
-  },
-  mark: function(e){
-    var id = $(e.currentTarget).data('id');
-    var model = this.collection.getOrFetch(id);
-    if($(e.currentTarget).children().prop('checked')){
-      model.set({is_checked: true})
-      model.save();
-      // console.log("I am now checked but was unchecked")
-    }else {
-      // console.log("I am now unchecked, but now was checked")
-      model.set({is_checked: false})
-      model.save();
-    }
 
-  },
-
-  markStarred: function(e){
-    var id = $(e.currentTarget).data('id');
-    var model = this.collection.getOrFetch(id);
-    if($(e.currentTarget).children().prop('checked')){
-      model.set({is_starred: true})
-      model.save();
-      // console.log("I am now checked but was unchecked")
-    }else {
-      // console.log("I am now unchecked, but now was checked")
-      model.set({is_starred: false})
-      model.save();
-    }
-  },
-  markImportant: function(e){
-    var id = $(e.currentTarget).data('id');
-    var model = this.collection.getOrFetch(id);
-    if($(e.currentTarget).children().prop('checked')){
-      model.set({is_important: true})
-      model.save();
-      // console.log("I am now checked but was unchecked")
-    }else {
-      // console.log("I am now unchecked, but now was checked")
-      model.set({is_important: false})
-      model.save();
-    }
-  },
   getSearch: function(e){
     e.preventDefault();
     this.searchResults = new Email.Collections.SearchResults();

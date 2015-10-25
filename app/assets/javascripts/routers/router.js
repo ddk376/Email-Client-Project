@@ -1,7 +1,7 @@
 Email.Routers.Router = Backbone.Router.extend({
   initialize: function(options){
     this.$rootEl = options.$rootEl;
-    this.$subroot = options.$subroot;
+    // this.$subroot = options.$subroot;
   },
   routes:{
     '': 'inbox',
@@ -14,12 +14,12 @@ Email.Routers.Router = Backbone.Router.extend({
     'email_threads/:id/emails': 'show'
   },
 
-  inbox: function(){
-    this.collection = new Email.Collections.InboxThreads();
-    var view = new Email.Views.ThreadsIndex({collection: this.collection, edit: false, delete: false});
-
-    this._swapView(view);
-  },
+  // inbox: function(){
+  //   this.collection = new Email.Collections.InboxThreads();
+  //   var view = new Email.Views.ThreadsIndex({collection: this.collection, edit: false, delete: false});
+  //
+  //   this._swapView(view);
+  // },
 
   starred: function(){
     this.collection = new Email.Collections.StarredThreads();
@@ -99,7 +99,7 @@ Email.Routers.Router = Backbone.Router.extend({
   _swapView: function(view){
     this._currentView && this._currentView.remove();
     this._currentView = view;
-    this.$subroot.html(view.$el);
+    this.$rootEl.html(view.$el);
     view.render();
   }
 })

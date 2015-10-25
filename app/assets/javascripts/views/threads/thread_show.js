@@ -1,4 +1,4 @@
-Email.Views.ThreadShow = Backbone.CompositeView.extend({
+Email.Views.ThreadShow = Backbone.View.extend({
   template: JST['threads/show'],
   initialize: function(){
     this.listenTo(this.model, 'sync', this.render);
@@ -6,10 +6,7 @@ Email.Views.ThreadShow = Backbone.CompositeView.extend({
   },
 
   render: function(){
-    _.(this.model.emails()).each(function(email){
-      var subView = new Email.Views.EmailShow({model: email});
 
-    });
     this.$el.html(content);
 
     return this;

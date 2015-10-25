@@ -4,7 +4,7 @@ window.Email = {
   Views: {},
   Routers: {},
   initialize: function() {
-    this.router = new Email.Routers.Router({$rootEl: $('.window'), $subroot: $('.indexview')});
+    this.router = new Email.Routers.Router({$rootEl: $('.indexview')});
     Backbone.history.start();
   }
 };
