@@ -1,13 +1,15 @@
-<% var date = new Date(email.escape('created_at') ) %>
+<% var date = new Date(thread.escape('created_at') ) %>
+<% debugger %>
 <span class="checkbox">
-  <input type="checkbox" <% if (email.escape("is_checked") === "true"){ %>
+  <input type="checkbox" <% if (thread.escape("is_checked") === "true"){ %>
   checked
   <%  } %> >
 </span>
 <div class="star is-starred"></div>
-<div class="important is-important" ></div>
-<span class="from"><span><%= email.escape('from') %> <% if (email.escape('is_draft') === "true"){ %>
+<div class="important isimportant" ></div>
+<span class="from"><span><%= last.from %> <% if (last.is_draft === "true"){ %>
+<span class="draft">Draft</span>
 <% }; %>  </span></span>
-<span class="subject_body" ><%= email.escape('subject') %> <div class="grey">- </div></span>
+<span class="subject_body" ><%= thread.escape('subject') %> - <div class="grey"><%= last.body %></div></span>
 <span class="paperclip" > <% if (edit == true) { %> <a href="#/emails/<%= email.escape('id') %>/edit">Edit</a><% } %></span>
-<span class="date_time"> <%= email.getDateOrTime() %></span>
+<span class="date_time"> <%= thread.getDateOrTime() %></span>

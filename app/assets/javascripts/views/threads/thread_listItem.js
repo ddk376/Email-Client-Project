@@ -15,23 +15,24 @@ Email.Views.ThreadListItem = Backbone.View.extend({
   initialize: function(options){
     this.edit = options.edit;
     this.delete = options.delete;
+    this.last = options.last;
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.model.emails(), "sync", this.render);
   },
 
   render: function(){
-    var count = this.model.length;
-    // var last = this.model.emails().last();
-    var content = this.template({email: this.model, count: count, edit: this.edit, delete: this.delete});
+    debugger
+    var content = this.template({thread: this.model, last: this.last, edit: this.edit, delete: this.delete});
 
     this.$el.html(content);
+
 
     return this;
   },
 
   showThread: function(e){
     debugger
-    var id = $(e.currentTarget).data('id');
+    var id = this.model.get('id');
     Backbone.history.navigate("#/email_threads/" + id + "/emails", {trigger: true});
   },
   mark: function(e){

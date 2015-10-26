@@ -3,12 +3,12 @@ Email.Views.ThreadsIndex = Backbone.View.extend({
   tagName: 'ul',
   initialize: function(options){
     // this._page = 1;
-    this.collection.fetch({
-      remove: false,
-      data: {page: this._page},
-      success: function(){}
-    })
-    this.collection.fetch({success: function(){ debugger}.bind(this)});
+    // this.collection.fetch({
+    //   remove: false,
+    //   data: {page: this._page},
+    //   success: function(){}
+    // })
+    this.collection.fetch();
     this.listenTo(this.collection, 'sync', this.render);
     $('.nextpage').click(this.nextPage.bind(this));
     $('.prevpage').click(this.prevPage.bind(this));
@@ -23,9 +23,15 @@ Email.Views.ThreadsIndex = Backbone.View.extend({
     this.$el.html(content);
     var that = this;
     this.collection.each(function (thread) {
-      thread.emails().fetch();
-      var view = new Email.Views.ThreadListItem({ model: thread, edit: this.edit, delete: this.delete});
-      that.$el.append(view.render().$el);
+      var emails = thread.emails();
+      emails.fetch({
+        success: function(collection, response, options){
+          debugger
+          var last = response[response.length-1];
+          var view = new Email.Views.ThreadListItem({ model: thread, emails: emails, last: last, edit: this.edit, delete: this.delete});
+          that.$el.append(view.render().$el);
+        }
+      });
     });
 
     return this;

@@ -1,6 +1,9 @@
 // Place all the styles related to the email_threads controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.draft{
+  color: red;
+}
 .star{
   display: inline-block;
   height: 16px;
@@ -20,17 +23,16 @@
 
 .important{
   display: inline-block;
+  height: 16px;
   width: 8px;
-	height: 15px;
   position: relative;
   top: 2px;
 }
 .is-not-important {
   background-image: asset-url(sprite_importance2);
   background-repeat: no-repeat -2px -42px;
-
 }
-.is-important {
+.isimportant {
   background-image: asset-url(sprite_importance2);
-  background-repeat: no-repeat -41px -42px;
+  background-repeat: no-repeat -40px -23px;
 }
