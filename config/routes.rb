@@ -25,6 +25,7 @@ Email::Application.routes.draw do
         resources :bcc_recipients, only: [:index]
         resources :cc_recipients, only: [:index]
       end
+      resources :emails, only: [:show]
     end
   end
 end

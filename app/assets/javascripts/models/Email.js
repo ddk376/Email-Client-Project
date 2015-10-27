@@ -1,5 +1,7 @@
 Email.Models.Email = Backbone.Model.extend({
-   url: 'api/email_threads/',
+   urlRoot: function(){
+     return 'api/email_threads/' + this.get('email_thread_id') + '/emails/';
+   },
    to: function(){
      if(!this._to){
        this._to = new Email.Collections.ToContacts([], {email: this})

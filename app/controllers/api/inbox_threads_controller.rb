@@ -7,10 +7,6 @@ class Api::InboxThreadsController < ApplicationController
     render json: @threads, include: :emails
   end
 
-
-
-
-
   def create
     @thread = EmailThread.new(thread_params)
     @email = ElectronicMail.new(email_params)

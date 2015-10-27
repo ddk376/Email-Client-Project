@@ -54,7 +54,10 @@ class Contact < ActiveRecord::Base
   end
 
   def sent_threads
-    self.sent_email_threads
+    self.sent_email_threads.select do|thread|
+      thread.is_trash == false &&
+      thread.is_spam == false
+    end
   end
 
   def draft_threads

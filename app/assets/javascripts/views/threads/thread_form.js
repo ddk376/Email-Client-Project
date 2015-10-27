@@ -1,6 +1,6 @@
 Email.Views.ThreadForm = Backbone.View.extend({
   template: JST['threads/form'],
-  className: 'create-email',
+  className: 'compose',
   events: {
     'click button': 'send_email',
   },

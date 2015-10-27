@@ -26,4 +26,10 @@ class Api::EmailsController < ApplicationController
       render :json =>@email.errors.full_messages, status: :uprocessable_entity
     end
   end
+
+  def show
+    @email = ElectronicMail.find(params[:id])
+
+    render json: @email
+  end
 end

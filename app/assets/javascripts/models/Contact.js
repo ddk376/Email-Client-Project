@@ -1,7 +1,5 @@
 Email.Models.Contact = Backbone.Model.extend({
-   urlRoot: function(){
-     return 'api/email_threads/' + this.id + '/'
-   },
+   urlRoot: 'api/contact',
    getDateOrTime: function(){
      var result = "";
      var date24hrsago = new Date().getTime() - (24 *3600);

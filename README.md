@@ -8,7 +8,7 @@
 - [ ] Create, show, delete, edit email threads
 - [ ] New emails
 - [ ] Reply to
-- [ ] Multiple Recipients, Bcc Recipients, Cc Recipients
+- [x] Multiple Recipients, Bcc Recipients, Cc Recipients
 - [ ] Send Email
 - [ ] Attachments in email
 - [ ] Search through threads

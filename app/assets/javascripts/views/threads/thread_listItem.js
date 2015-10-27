@@ -1,4 +1,3 @@
-
 Email.Views.ThreadListItem = Backbone.View.extend({
   template: JST['threads/list_item'],
   tagName: 'li',
@@ -21,7 +20,6 @@ Email.Views.ThreadListItem = Backbone.View.extend({
   },
 
   render: function(){
-    debugger
     var content = this.template({thread: this.model, last: this.last, edit: this.edit, delete: this.delete});
 
     this.$el.html(content);
@@ -31,21 +29,19 @@ Email.Views.ThreadListItem = Backbone.View.extend({
   },
 
   showThread: function(e){
-    debugger
     var id = this.model.get('id');
     Backbone.history.navigate("#/email_threads/" + id + "/emails", {trigger: true});
   },
+
   mark: function(e){
-    var id = $(e.currentTarget).data('id');
-    var model = this.collection.getOrFetch(id);
     if($(e.currentTarget).children().prop('checked')){
-      model.set({is_checked: true})
-      model.save();
+      this.model.set({is_checked: true})
+      this.model.save();
       // console.log("I am now checked but was unchecked")
     }else {
       // console.log("I am now unchecked, but now was checked")
-      model.set({is_checked: false})
-      model.save();
+      this.model.set({is_checked: false})
+      this.model.save();
     }
 
   },

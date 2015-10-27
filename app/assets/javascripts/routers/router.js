@@ -73,10 +73,13 @@ Email.Routers.Router = Backbone.Router.extend({
   show: function(id){
     if(this.collection){
       var showThread = this.collection.getOrFetch(id)
-      showThread.emails().fetch();
-      var view = new Email.Views.ThreadShow({collection: this. collection,model: showThread});
-
-      this._swapView(view);
+      var that = this;
+      showThread.emails().fetch({
+        success: function(collection, response, options){
+          var view = new Email.Views.ThreadShow({model: showThread});
+          that._swapView(view);
+        }
+      });
     } else {
       Backbone.history.navigate("");
     }

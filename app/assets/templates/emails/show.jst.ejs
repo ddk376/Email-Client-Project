@@ -1,15 +1,21 @@
-<ul>
-  <li>from: <%= email.escape('from') %></li>
-  <li>to: </li>
-  <#% if email.bcc().length > 0 %>
-    <li> </li>
-  <#% end %>
-  <#% if email.cc().length > 0 %>
-    <li> </li>
-  <#% end %>
-  <li>date: <%= email.escape('updated_at') %></li>
-  <li>subject: <%= thread.escape('subject') %></li>
-</ul>
-<br>
-<br>
-<%= email.escape('body') %>
+<div class="email">
+  <ul>
+    <li>from: <%= email.escape('from') %></li>
+    <li>to: <%  _.each(to.models, function(recipient){ %>
+        <%= recipient.escape('email') %>,
+      <% }); %>
+    </li>
+    <% _.each(bcc.models, function(bcc_recipient){ %>
+      <li>bcc: <%= bcc_recipient.escape('email') %>, </li>
+    <%  }) %>
+    <% _.each(cc.models, function(cc_recipient){ %>
+      <li>cc: <%= cc_recipient.escape('email') %></li>
+    <%  }) %>
+    <li>date: <%= email.escape('updated_at') %></li>
+    <li>subject: <%= thread.escape('subject') %></li>
+  </ul>
+  <br>
+  <br>
+  <%= email.escape('body') %>
+  <br>
+</div>
