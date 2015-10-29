@@ -21,3 +21,23 @@
     </ul>
 <%  }) %>
 <% }%>
+
+
+<% if email.bcc().length > 0 %>
+  <li>bcc: <%= bcc.join(',') %> </li>
+<% end %>
+<% if email.cc().length > 0 %>
+  <li>cc: <%= cc.join(',') %> </li>
+<% end %>
+
+
+<li>to: <%#  _.each(to.models, function(recipient){ %>
+    <%#= recipient.escape('email') %>,
+  <%# }); %>
+</li>
+<%# _.each(bcc.models, function(bcc_recipient){ %>
+  <li>bcc: <%#= bcc_recipient.escape('email') %>, </li>
+<%#  }) %>
+<%# _.each(cc.models, function(cc_recipient){ %>
+  <li>cc: <%#= cc_recipient.escape('email') %></li>
+<%#  }) %>

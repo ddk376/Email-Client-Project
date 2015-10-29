@@ -23,6 +23,14 @@ class User < ActiveRecord::Base
     user.try(:is_password?, password) ? user : nil                                #invokes the public method whose name goes as the first argument just like public_send, except that it the receiver does not respond to it the call returns nil rather than raising an exception
   end
 
+  def self.current_user
+    Thread.current[:current_user]
+  end
+
+  def self.current_user=(user)
+    Thread.current[:current_user] = user
+  end
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)

@@ -1,11 +1,5 @@
 Email.Models.EmailThread = Backbone.Model.extend({
-   urlRoot: 'api/email_threads',
-   emails: function(){
-     if(!this._emails){
-       this._emails = new Email.Collections.Emails([], {email_thread: this})
-     }
-     return this._emails;
-   },
+   urlRoot: 'api/email_threads/',
    getDateOrTime: function(){
      var result = "";
      var date24hrsago = new Date().getTime() - (24 *3600);

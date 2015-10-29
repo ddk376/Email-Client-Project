@@ -5,4 +5,6 @@ class CcRecipient < ActiveRecord::Base
     dependent: :destroy
 
   belongs_to :contact
+
+
 end

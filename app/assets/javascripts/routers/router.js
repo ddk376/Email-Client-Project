@@ -10,8 +10,9 @@ Email.Routers.Router = Backbone.Router.extend({
     'draft': 'draft',
     'spam': 'spam',
     'trash': 'trash',
+    'all': 'all',
     'sent': 'sent',
-    'email_threads/:id/emails': 'show'
+    'email_threads/:id': 'show'
   },
 
   inbox: function(){
@@ -72,16 +73,11 @@ Email.Routers.Router = Backbone.Router.extend({
 
   show: function(id){
     if(this.collection){
-      var showThread = this.collection.getOrFetch(id)
-      var that = this;
-      showThread.emails().fetch({
-        success: function(collection, response, options){
-          var view = new Email.Views.ThreadShow({model: showThread});
-          that._swapView(view);
-        }
-      });
+      var showThread = this.collection.getOrFetch(id);
+      var view = new Email.Views.ThreadShow({model: showThread});
+      this._swapView(view);
     } else {
-      Backbone.history.navigate("");
+      Backbone.history.navigate("", {trigger: true});
     }
   },
 

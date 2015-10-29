@@ -8,4 +8,8 @@ class EmailThread < ActiveRecord::Base
     foreign_key: :email_thread_id,
     dependent: :destroy
 
+  def parent_email
+    self.emails.select {|email| email.parent_email_id == nil }.first
+  end
+
 end

@@ -418,7 +418,12 @@ input[type=checkbox]{
   padding-right: 10px;
 }
 
-
+.hidden{
+  display: none;
+}
+.show{
+  display: block;
+}
 .create-email {
   display: block;
   height: 20%;
@@ -446,4 +451,80 @@ input[type=checkbox]{
 .email-show-render h1 {
   font-weight: normal;
   font-size: 16px;
+}
+
+.compose{
+  font-weight: normal;
+  max-height: 600px;
+  max-width: 600px;
+  position: fixed;
+  bottom:0px;
+  right: 5px;
+  font-size: 14px;
+  background-color: white;
+}
+.compose > nav {
+  background-color: #404040;
+  color: white;
+  height: 30px;
+  vertical-align: middle;
+}
+.compose nav > span{
+  margin: auto;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 4px 0 0 6px;
+  font-family: arial,sans-serif;
+  font-size: 13px;
+}
+.compose textarea#email_body {
+  width: 549px;
+  border: 0px;
+  resize: none;
+  outline: none;
+  font-size: 13px;
+}
+
+.compose .email-form-footer {
+  border:  1px solid rgb(237,237,237);
+  background-color: #e5e5e5;
+  height: 44px;
+
+}
+.compose footer.email-form-footer button {
+  background-color: #4d90fe;
+  border: 1px solid #3079ed;
+  color: #fff;
+  border-radius: 2px;
+  cursor: default;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 27px;
+  min-width: 54px;
+  padding: 0 8px;
+  position: relative;
+  top: 5px;
+  left: 10px;
+}
+
+.to label, .bcc label, .cc label{
+  color: grey;
+}
+.to input, .bcc input, .cc input{
+  width: 95%;
+}
+.to{
+  border-top: 1px solid grey;
+}
+.to, .bcc, .cc, .subject, .email_body{
+  padding: 5px;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+#email_body{
+  border: 1px solid grey;
+  width: 100%;
+  min-height: 200px;
 }

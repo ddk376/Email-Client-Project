@@ -23,15 +23,10 @@ Email.Views.ThreadsIndex = Backbone.View.extend({
     this.$el.html(content);
     var that = this;
     this.collection.each(function (thread) {
-      var emails = thread.emails();
-      emails.fetch({
-        success: function(collection, response, options){
-          debugger
-          var last = response[response.length-1];
-          var view = new Email.Views.ThreadListItem({ model: thread, emails: emails, last: last, edit: this.edit, delete: this.delete});
-          that.$el.append(view.render().$el);
-        }
-      });
+      emails = thread.get('emails');
+      last = emails[emails.length - 1];
+      var view = new Email.Views.ThreadListItem({ model: thread, last: last, edit: this.edit, delete: this.delete});
+      that.$el.append(view.render().$el);
     });
 
     return this;

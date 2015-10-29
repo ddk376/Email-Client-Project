@@ -1,14 +1,10 @@
 class Api::EmailsController < ApplicationController
   include EmailsHelper
+
   def index
-    cu = current_user.associated_contact_info
-    thread = EmailThread.find(params[:email_thread_id])
-    @emails = []
-    thread.emails.each do |email|
-      email.recipients.each do |recipient| @emails << email if recipient.contact_id == cu.id end
-      email.bcc_recipients.each do |recipient| @emails << email if recipient.contact_id == cu.id end
-      email.cc_recipients.each do |recipient| @emails << email if recipient.contact_id == cu.id end
-    end
+    email = ElectronicMail.find(params[:email_id])
+    @emails = email.children_emails
+
     render json: @emails
   end
 
@@ -30,6 +26,7 @@ class Api::EmailsController < ApplicationController
   def show
     @email = ElectronicMail.find(params[:id])
 
-    render json: @email
+    render json: @email, include: [:send_to, :bcc, :cc, :children]
   end
+
 end

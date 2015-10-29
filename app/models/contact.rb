@@ -8,6 +8,11 @@ class Contact < ActiveRecord::Base
     class_name: 'EmailThread',
     foreign_key: :owner_id
 
+  has_many :sent_emails,
+    class_name: 'ElectronicMail',
+    foreign_key: :from,
+    primary_key: :email
+
   has_many :received,
     class_name: 'Recipient',
     foreign_key: :contact_id
@@ -32,7 +37,7 @@ class Contact < ActiveRecord::Base
     through: :received_as_cc,
     source: :email
 
-  has_many :been_in_contact_with, # not updated
+  has_many :been_in_contact_with,
     class_name: 'HasContact',
     foreign_key: :contact_id
 

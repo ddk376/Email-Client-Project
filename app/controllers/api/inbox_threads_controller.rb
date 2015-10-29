@@ -19,10 +19,4 @@ class Api::InboxThreadsController < ApplicationController
     render json: @thread, include: :emails
   end
 
-
-
-
-
-
-
 end

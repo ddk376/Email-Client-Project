@@ -1,15 +1,17 @@
+<br>
 <div class="email">
+  <button type="button" id="reply">Reply</button>
   <ul>
     <li>from: <%= email.escape('from') %></li>
-    <li>to: <%  _.each(to.models, function(recipient){ %>
-        <%= recipient.escape('email') %>,
+    <li>to: <%  _.each(email.get('send_to'), function(recipient){ %>
+        <%= recipient.email %>,
       <% }); %>
     </li>
-    <% _.each(bcc.models, function(bcc_recipient){ %>
-      <li>bcc: <%= bcc_recipient.escape('email') %>, </li>
+    <% _.each(email.get('bcc'), function(bcc_recipient){ %>
+      <li>bcc: <%= bcc_recipient.email %>, </li>
     <%  }) %>
-    <% _.each(cc.models, function(cc_recipient){ %>
-      <li>cc: <%= cc_recipient.escape('email') %></li>
+    <% _.each(email.get('cc'), function(cc_recipient){ %>
+      <li>cc: <%= cc_recipient.email %>,</li>
     <%  }) %>
     <li>date: <%= email.escape('updated_at') %></li>
     <li>subject: <%= thread.escape('subject') %></li>
@@ -18,4 +20,32 @@
   <br>
   <%= email.escape('body') %>
   <br>
+  <br>
+</div>
+<div class="response">
+  <div class="respond<%= email.escape('id') %> hidden">
+    <div class="to">
+    <label for="email_to">To</label>
+    <input id="email_to" name="electronic_mail[to]" type="text" value=""><br>
+    </div>
+    <div class="bcc">
+    <label for="email_bcc">Bcc</label>
+    <input id="email_bcc" name="electronic_mail[bcc]" type="text" value="<% _.each(email.get('bcc'), function(bcc_recipient){ %><%= bcc_recipient.email %>,<%  }) %>"><br>
+    </div>
+    <div class="cc">
+    <label for="email_cc">Cc</label>
+    <input id="email_cc" name="electronic_mail[cc]" type="text" value="<% _.each(email.get('cc'), function(cc_recipient){ %><%= cc_recipient.email %>,<%  }) %>"><br>
+    </div>
+
+
+    <label for="email_body"></label>
+    <textarea id="email_body" name="electronic_mail[body]"></textarea>
+    <br>
+
+    <!-- <input type="file" name="electronic_mail[file_avatar]" id="input-file-attachment"> -->
+    <footer class="email-form-footer">
+    <button type="button" name="button">Send</button>
+
+    </footer>
+  </div>
 </div>

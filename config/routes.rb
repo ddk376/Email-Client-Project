@@ -19,13 +19,12 @@ Email::Application.routes.draw do
     resources :all_threads, only: [:index]
     resources :spam_threads, only: [:index]
     resources :trash_threads, only: [:index]
-    resources :email_threads, only: [:show] do
-      resources :emails, only: [:index] do
-        resources :recipients, only: [:index]
-        resources :bcc_recipients, only: [:index]
-        resources :cc_recipients, only: [:index]
-      end
-      resources :emails, only: [:show]
+
+    resources :email_threads, only: [:show]
+
+    resources :emails, only: [:show] do
+      resources :emails, only: [:index]
     end
+
   end
 end

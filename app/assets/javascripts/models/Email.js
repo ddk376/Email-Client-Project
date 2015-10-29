@@ -1,6 +1,10 @@
 Email.Models.Email = Backbone.Model.extend({
-   urlRoot: function(){
-     return 'api/email_threads/' + this.get('email_thread_id') + '/emails/';
+   urlRoot: 'api/emails/',
+   children_emails: function(options){
+     if(!this._children){
+       this._children = new Email.Collections.Emails([], {email: this})
+     }
+     return this._children;
    },
    to: function(){
      if(!this._to){

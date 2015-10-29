@@ -3,5 +3,19 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .email{
   width: 80%;
+
+  font-weight: normal;
+}
+.response{
+  width: 80%;
   border-bottom: 1px solid grey;
+  font-weight: normal;
+}
+#reply{
+  float: right;
+}
+
+
+.respond{
+  font-weight: normal;
 }

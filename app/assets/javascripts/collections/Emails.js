@@ -1,8 +1,7 @@
 Email.Collections.Emails = Backbone.Collection.extend({
   url: function(){
-    return this.email_thread.url() + "/emails"
+    return 'api/emails/'+ this.email.get('id') + '/emails';
   },
-  comparator: 'updated_at',
   model: Email.Models.Email,
   comparator: 'updated_at',
   getOrFetch: function(id){
@@ -22,6 +21,8 @@ Email.Collections.Emails = Backbone.Collection.extend({
     return thread;
   },
   initialize: function(models, options){
+    debugger
     this.email_thread = options.email_thread
+    this.email = options.email
   }
 })

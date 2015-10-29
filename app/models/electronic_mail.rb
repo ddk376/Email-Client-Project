@@ -61,6 +61,22 @@ class ElectronicMail < ActiveRecord::Base
     self.is_draft = false if @sent
   end
 
+  def children
+    user = User.current_user
+    result = []
+    children = self.children_emails
+    children.each do |email|
+      [email.recipients, email.bcc_recipients, email.cc_recipients].each do |recipient_table|
+        result << email if recipient_table.any? { |recipient_entry| recipient_entry.contact_id == user.id } &&
+                          !result.include?(email)
+      end
+
+      result << email if email.from == user.email && !result.include?(email)
+    end
+
+    result.uniq
+  end
+
   private
   def add_recipients
     self.recipients.clear
