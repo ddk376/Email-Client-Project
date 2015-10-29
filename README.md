@@ -1,5 +1,8 @@
 # Noofel Email-Client
-(www.noofel.com "Live")
+Under going major reconstructing to support threads and multiple Recipients
+
+Many of previous functionalities are not working due to implementation of improvements
+
 
 # Features
 - [x] Create an account
