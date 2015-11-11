@@ -9,7 +9,7 @@
   </section>
   <section class="compose hidden">
     <nav>
-      <span>New Message</span>
+      <span>New Message</span><span class="compose-close">&times;</span>
     </nav>
     <div class="to">
     <label for="email_to">To</label>
@@ -44,5 +44,9 @@
 <script type="text/javascript">
   $('.compose_button').on('click', function(e){
     $('.compose').removeClass('hidden').addClass('show');
+  })
+
+  $('.compose-close').on('click', function(e){
+    $('.compose').removeClass('show').addClass('hidden');
   })
 </script>

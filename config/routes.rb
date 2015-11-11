@@ -20,9 +20,9 @@ Email::Application.routes.draw do
     resources :spam_threads, only: [:index]
     resources :trash_threads, only: [:index]
 
-    resources :email_threads, only: [:show]
+    resources :email_threads, only: [:show, :update, :new, :create]
 
-    resources :emails, only: [:show] do
+    resources :emails, only: [:show, :update, :new, :create] do
       resources :emails, only: [:index]
     end
 

@@ -23,6 +23,14 @@ class Api::EmailsController < ApplicationController
     end
   end
 
+  def update
+    debugger
+    email = ElectronicMail.find(params[:email][:id])
+    email.update(email_update_params)
+
+    render json: email
+  end
+
   def show
     @email = ElectronicMail.find(params[:id])
 

@@ -38,7 +38,7 @@ class ElectronicMail < ActiveRecord::Base
     dependent: :destroy
 
   attr_reader :sent,:receivers, :bcc_receivers, :cc_receivers
-  after_save :add_recipients
+  after_commit :add_recipients, on: [:create, :update]
 
   def to=(receiver_emails)
     @receivers = receiver_emails
@@ -63,6 +63,7 @@ class ElectronicMail < ActiveRecord::Base
 
   def children
     user = User.current_user
+    # debugger
     result = []
     children = self.children_emails
     children.each do |email|

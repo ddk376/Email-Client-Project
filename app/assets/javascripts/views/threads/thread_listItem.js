@@ -9,7 +9,7 @@ Email.Views.ThreadListItem = Backbone.View.extend({
     'click .date_time': 'showThread',
     'click .checkbox': 'mark',
     'click .star': 'markStarred',
-    'click .important': 'markImportant'
+    'click .importance': 'markImportant'
   },
   initialize: function(options){
     this.edit = options.edit;
@@ -19,7 +19,7 @@ Email.Views.ThreadListItem = Backbone.View.extend({
   },
 
   render: function(){
-    var content = this.template({thread: this.model, last: this.last, edit: this.edit, delete: this.delete});
+    var content = this.template({thread: this.model, last: this.last, starred: this.hasStarred(), edit: this.edit, delete: this.delete});
     this.$el.html(content);
 
 
@@ -35,9 +35,7 @@ Email.Views.ThreadListItem = Backbone.View.extend({
     if($(e.currentTarget).children().prop('checked')){
       this.model.set({is_checked: true})
       this.model.save();
-      // console.log("I am now checked but was unchecked")
     }else {
-      // console.log("I am now unchecked, but now was checked")
       this.model.set({is_checked: false})
       this.model.save();
     }
@@ -45,29 +43,53 @@ Email.Views.ThreadListItem = Backbone.View.extend({
   },
 
   markStarred: function(e){
-    var id = $(e.currentTarget).data('id');
-    var model = this.collection.getOrFetch(id);
-    if($(e.currentTarget).children().prop('checked')){
-      model.set({is_starred: true})
-      model.save();
-      // console.log("I am now checked but was unchecked")
+    if($(e.currentTarget).hasClass('is-starred')){
+      $(e.currentTarget).removeClass('is-starred').addClass('is-not-starred');
+      this.setStarred(false);
     }else {
-      // console.log("I am now unchecked, but now was checked")
-      model.set({is_starred: false})
-      model.save();
+      $(e.currentTarget).removeClass('is-not-starred').addClass('is-starred');
+      this.setStarred(true);
     }
   },
+
   markImportant: function(e){
-    var id = $(e.currentTarget).data('id');
-    var model = this.collection.getOrFetch(id);
-    if($(e.currentTarget).children().prop('checked')){
-      model.set({is_important: true})
-      model.save();
-      // console.log("I am now checked but was unchecked")
+    if($(e.currentTarget).hasClass('is-important')){
+      $(e.currentTarget).removeClass('is-important').addClass('is-not-important');
+      this.model.set({is_important: false})
     }else {
-      // console.log("I am now unchecked, but now was checked")
-      model.set({is_important: false})
-      model.save();
+      $(e.currentTarget).removeClass('is-not-important').addClass('is-important');
+      this.model.set({is_important: true})
     }
+    this.model.save();
   },
+
+  hasStarred: function(){
+    emails = this.model.get('emails');
+    _.each(emails, function(email){
+      var e = new Email.Models.Email({id: email.id});
+      e.fetch();
+      if(e.escape('is_starred') === "true"){
+        return true;
+      }
+    })
+    return false;
+  },
+
+  setStarred: function(option){
+    emails = this.model.get('emails');
+    _.each(emails, function(email){
+      var e = new Email.Models.Email({id: email.id});
+      e.fetch({
+        success: function(){
+          if(option){
+            e.set({is_starred: true});
+          }else{
+            e.set({is_starred: false});
+          }
+          e.save();
+        }
+      });
+    })
+  }
+
 })

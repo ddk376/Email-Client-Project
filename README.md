@@ -9,12 +9,12 @@ Many of previous functionalities are not working due to implementation of improv
 - [x] Sign in / Sign Out
 - [x] Demo User
 - [ ] Create, show, delete, edit email threads
-- [ ] New emails
-- [ ] Reply to
+- [x] New emails
+- [x] Reply to
+- [ ] Forward
 - [x] Multiple Recipients, Bcc Recipients, Cc Recipients
 - [ ] Send Email
 - [ ] Attachments in email
-- [ ] Search through threads
 - [ ] Receive Email
 
 # Database

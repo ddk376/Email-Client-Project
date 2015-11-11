@@ -3,7 +3,7 @@ Email.Collections.Emails = Backbone.Collection.extend({
     return 'api/emails/'+ this.email.get('id') + '/emails';
   },
   model: Email.Models.Email,
-  comparator: 'updated_at',
+  comparator: 'created_at',
   getOrFetch: function(id){
     var thread = this.get(id);
     if(thread){

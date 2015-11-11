@@ -21,10 +21,10 @@
   background-repeat: no-repeat;
 }
 
-.important{
+.importance{
   display: inline-block;
   height: 16px;
-  width: 8px;
+  width: 20px;
   position: relative;
   top: 2px;
 }
@@ -32,7 +32,15 @@
   background-image: asset-url(sprite_importance2);
   background-repeat: no-repeat -2px -42px;
 }
-.isimportant {
+.is-important {
   background-image: asset-url(sprite_importance2);
-  background-repeat: no-repeat -40px -23px;
+  background-repeat: no-repeat;
+  background-position: -38px -38px;
+}
+
+.compose-close{
+  float: right;
+  position: relative;
+  right: 5px;
+  cursor: pointer;
 }

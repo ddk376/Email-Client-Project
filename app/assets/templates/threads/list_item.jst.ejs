@@ -4,8 +4,16 @@
   checked
   <%  } %> >
 </span>
-<div class="star is-starred"></div>
-<div class="important isimportant" ></div>
+<div class="star <% if (thread.escape('is_starred') === 'true'){ %>
+    is-starred
+<% } else { %>
+    is-not-starred
+<% } %>"></div>
+<div class="importance <% if (thread.escape('is_important') === 'true'){ %>
+    is-important
+<% } else { %>
+    is-not-important
+<% } %>" ></div>
 <span class="from"><span><%= last.from %> <% if (last.is_draft === "true"){ %>
 <span class="draft">Draft</span>
 <% }; %>  </span></span>
