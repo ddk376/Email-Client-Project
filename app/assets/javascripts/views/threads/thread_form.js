@@ -3,6 +3,7 @@ Email.Views.ThreadForm = Backbone.View.extend({
   className: 'compose',
   events: {
     'click button': 'send_email',
+    'click .compose-close': 'closeCompose'
   },
   initialize: function(options){
     this.listenTo(this.model, 'sync', this.render);
@@ -14,6 +15,11 @@ Email.Views.ThreadForm = Backbone.View.extend({
 
     return this;
   },
+
+  closeCompose: function(){
+    this.remove();
+  },
+
   send_email: function(e){
     var email_to = $('#email_to').val();
     var email_cc = $('#email_cc').val();
@@ -46,6 +52,8 @@ Email.Views.ThreadForm = Backbone.View.extend({
     //   }
     // })
   },
+
+
   saveDraft: function(){
     var email_to = $('#email_to').val();
     if(email_to){

@@ -1,7 +1,7 @@
 Email.Collections.AllThreads = Backbone.Collection.extend({
   url: 'api/all_threads',
   model: Email.Models.EmailThread,
-  comparator: 'updated_at',
+  comparator: 'created_at',
   getOrFetch: function(id){
     var thread = this.get(id);
     if(thread){

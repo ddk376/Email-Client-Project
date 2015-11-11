@@ -1,6 +1,8 @@
 Email.Views.ThreadsIndex = Backbone.View.extend({
   template: JST['threads/index'],
   tagName: 'ul',
+  events: {
+  },
   initialize: function(options){
     // this._page = 1;
     // this.collection.fetch({
@@ -13,8 +15,10 @@ Email.Views.ThreadsIndex = Backbone.View.extend({
     $('.nextpage').click(this.nextPage.bind(this));
     $('.prevpage').click(this.prevPage.bind(this));
     $('.searchsubmit').click(this.getSearch.bind(this));
+    $('.compose_button').click(this.composeEmail.bind(this));
     this.edit = options.edit;
     this.delete = options.delete;
+    this.compose = [];
   },
 
   render: function(){
@@ -25,7 +29,8 @@ Email.Views.ThreadsIndex = Backbone.View.extend({
     this.collection.each(function (thread) {
       emails = thread.get('emails');
       last = emails[emails.length - 1];
-      var view = new Email.Views.ThreadListItem({ model: thread, last: last, edit: this.edit, delete: this.delete});
+      var view = new Email.Views.ThreadListItem({ model: thread, last: last,
+                                        edit: this.edit, delete: this.delete});
       that.$el.append(view.render().$el);
     });
 
@@ -48,6 +53,12 @@ Email.Views.ThreadsIndex = Backbone.View.extend({
 		});
   },
 
+  composeEmail: function(){
+    var email = new Email.Models.Email();
+    var view = new Email.Views.ThreadForm({model: email});
+    this.compose.push(view);
+    $('main').append(view.render().$el);
+  },
 
   nextPage: function(){
     this._page++;
@@ -67,4 +78,6 @@ Email.Views.ThreadsIndex = Backbone.View.extend({
       success: function(){}
     })
   }
+
+
 })

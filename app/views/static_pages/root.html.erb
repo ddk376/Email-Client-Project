@@ -7,46 +7,4 @@
   </section>
   <section class="indexview">
   </section>
-  <section class="compose hidden">
-    <nav>
-      <span>New Message</span><span class="compose-close">&times;</span>
-    </nav>
-    <div class="to">
-    <label for="email_to">To</label>
-    <input id="email_to" name="electronic_mail[to]" type="text" value=""><br>
-    </div>
-    <div class="cc">
-    <label for="email_cc">Cc</label>
-    <input id="email_cc" name="electronic_mail[cc]" type="text" value=""><br>
-    </div>
-    <div class="bcc">
-    <label for="email_bcc">Bcc</label>
-    <input id="email_bcc" name="electronic_mail[bcc]" type="text" value=""><br>
-    </div>
-
-    <div class="subject">
-    <label for="email_subject">Subject</label>
-    <input id="email_subject" name="electronic_mail[subject]" type="text" value=""> <br>
-    </div>
-    <div class="email_body">
-    <label for="email_body"></label>
-    <textarea id="email_body" name="electronic_mail[body]"></textarea>
-    </div>
-
-    <!-- <input type="file" name="electronic_mail[file_avatar]" id="input-file-attachment"> -->
-    <footer class="email-form-footer">
-    <button type="button" name="button">Send</button>
-    </footer>
-
-  </section>
 </main>
-
-<script type="text/javascript">
-  $('.compose_button').on('click', function(e){
-    $('.compose').removeClass('hidden').addClass('show');
-  })
-
-  $('.compose-close').on('click', function(e){
-    $('.compose').removeClass('show').addClass('hidden');
-  })
-</script>
