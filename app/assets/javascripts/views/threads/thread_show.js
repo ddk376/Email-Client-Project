@@ -2,6 +2,7 @@ Email.Views.ThreadShow = Backbone.View.extend({
   template: JST['threads/show'],
   initialize: function(){
     this.listenTo(this.model, 'sync', this.render);
+    $('.compose_button').click(this.composeEmail.bind(this));
   },
 
   render: function(){
@@ -18,6 +19,13 @@ Email.Views.ThreadShow = Backbone.View.extend({
     });
 
     return this;
-  }
+  },
+  composeEmail: function(){
+    var email = new Email.Models.Email();
+    var view = new Email.Views.ThreadForm({model: email});
+    this.compose.push(view);
+    $('main').append(view.render().$el);
+  },
+
 
 })

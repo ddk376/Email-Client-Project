@@ -26,19 +26,23 @@ Email.Views.ThreadForm = Backbone.View.extend({
     var email_bcc = $('#email_bcc').val();
     var email_subject = $('#email_subject').val();
     var email_body = $('#email_body').val();
-    var email_attachment = this.$('#input-file-attachment')[0].files[0]
+    // var email_attachment = this.$('#input-file-attachment')[0].files[0]
+    // formData.append("email[to]", email_to);
+    // formData.append("email[cc]", email_cc);
+    // formData.append("email[bcc]", email_bcc);
+    // formData.append("email[body]", email_body);
 
-    var formData = new FormData();
-    formData.append("electronic_mail[to]", email_to);
-    formData.append("electronic_mail[cc]", email_cc);
-    formData.append("electronic_mail[bcc]", email_bcc);
-    formData.append("electronic_mail[subject]", email_subject);
-    formData.append("electronic_mail[body]", email_body);
+    var formDataThread = new FormData();
+    formDataThread.append("email[subject]", email_subject);
 
-    formData.append("electronic_mail[file_avatar]", email_attachment);
+
+
+    // formData.append("electronic_mail[file_avatar]", email_attachment);
     var that = this;
+    debugger
     this.model.saveFormData(formData, {
       success: function(){
+        debugger
         that.collection.add(that.model);
         Backbone.history.navigate("#", { trigger: true });
       }

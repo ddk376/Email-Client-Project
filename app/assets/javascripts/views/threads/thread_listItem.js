@@ -7,7 +7,7 @@ Email.Views.ThreadListItem = Backbone.View.extend({
     'click .subject_body': 'showThread',
     'click .paperclip': 'showThread',
     'click .date_time': 'showThread',
-    'click .checkbox': 'mark',
+    'click .checkbox-box': 'markChecked',
     'click .star': 'markStarred',
     'click .importance': 'markImportant'
   },
@@ -31,15 +31,15 @@ Email.Views.ThreadListItem = Backbone.View.extend({
     Backbone.history.navigate("#/email_threads/" + id , {trigger: true});
   },
 
-  mark: function(e){
-    if($(e.currentTarget).children().prop('checked')){
-      this.model.set({is_checked: true})
-      this.model.save();
+  markChecked: function(e){
+    if($(e.currentTarget).hasClass('is-checked')){
+      $(e.currentTarget).removeClass('is-checked');
+      this.model.set({is_checked: false});
     }else {
-      this.model.set({is_checked: false})
-      this.model.save();
+      $(e.currentTarget).addClass('is-checked');
+      this.model.set({is_checked: false});
     }
-
+    this.model.save();
   },
 
   markStarred: function(e){

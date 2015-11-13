@@ -21,6 +21,7 @@ Email.Models.EmailThread = Backbone.Model.extend({
       return json;
     },
    saveFormData: function(formData, options){
+     debugger
     var method = this.isNew() ? "POST" : "PUT";
     var model = this;
 

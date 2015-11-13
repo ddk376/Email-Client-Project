@@ -22,8 +22,9 @@ Email.Views.EmailShow = Backbone.View.extend({
   },
 
   render_children: function(email){
+    debugger
     children = email.get('children');
-    if(children.length > 0){
+    if(children && children.length > 0){
       var that = this;
       _.each(children, function(child){
         child_email = new Email.Models.Email({id: child.id});

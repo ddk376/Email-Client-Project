@@ -24,7 +24,6 @@ class Api::EmailsController < ApplicationController
   end
 
   def update
-    debugger
     email = ElectronicMail.find(params[:email][:id])
     email.update(email_update_params)
 
